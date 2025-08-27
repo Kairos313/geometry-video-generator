@@ -3780,7 +3780,31 @@ else:  # Clockwise
 
 ---
 
-### **4. Audio Synchronization (CRITICAL)**
+### 5. Visual Fidelity Requirements (CRITICAL)
+
+**The generated diagram must be visually identical to the question image:**
+
+1. **Exact Orientation Matching**: 
+   - The diagram must have the same rotation and orientation as the question image.
+   - All elements must be positioned exactly as shown.
+
+2. **Visual Reference Construction**:
+   - Start by analyzing the question image for exact positioning.
+   - Use visual estimation for anchor points, then compute others mathematically.
+   - Ensure all computed positions match the visual appearance.
+
+3. **Element-by-Element Matching**:
+   - Points must be at the same relative positions.
+   - Lines must connect the same points in the same order.
+   - Angles must be drawn in the same quadrants/sectors.
+   - All geometric relationships must be preserved.
+
+4. **Quality Verification**:
+   - Before finalizing, verify the diagram matches the question image exactly.
+   - If any element doesn't match, adjust the construction logic.
+   - The goal is visual identity, not just mathematical correctness.
+
+### **5. Audio Synchronization (CRITICAL)**
 
 **Include audio synchronization points:**
 - Add comments indicating where audio cues should occur

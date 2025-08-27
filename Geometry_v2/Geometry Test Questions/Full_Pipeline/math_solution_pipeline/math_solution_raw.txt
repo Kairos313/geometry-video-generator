@@ -1,0 +1,348 @@
+### **OUTPUT 1: Standard Solution with Khan Academy Style Text**
+
+```json
+{
+  "solution_steps": [
+    {
+      "step_id": "part_a_find_angle_XWY",
+      "sentences": [
+        {
+          "text": "Hello! Let's solve this problem step-by-step. First, for part (a), we need to find the size of angle XWY in triangle WXY.",
+          "khan_academy_text": "$\\text{Part (a): Find } \\angle XWY$",
+          "geometric_elements": [
+            { "element_type": "point", "element_id": "point_W", "animation_type": "draw_and_label" },
+            { "element_type": "point", "element_id": "point_X", "animation_type": "draw_and_label" },
+            { "element_type": "point", "element_id": "point_Y", "animation_type": "draw_and_label" },
+            { "element_type": "line", "element_id": "line_WX", "animation_type": "draw" },
+            { "element_type": "line", "element_id": "line_XY", "animation_type": "draw" },
+            { "element_type": "line", "element_id": "line_WY", "animation_type": "draw" },
+            { "element_type": "region", "element_id": "region_triangle_WXY_interior", "animation_type": "draw" }
+          ]
+        },
+        {
+          "text": "We are given the lengths of two sides, WX equals 6 cm and XY equals 5 cm, and one angle, angle WYX, which is 70 degrees.",
+          "khan_academy_text": ["$WX = 6\\text{ cm}$", "$XY = 5\\text{ cm}$", "$\\angle WYX = 70^\\circ$"],
+          "geometric_elements": [
+            { "element_type": "line", "element_id": "line_WX", "animation_type": "highlight_and_label" },
+            { "element_type": "line", "element_id": "line_XY", "animation_type": "highlight_and_label" },
+            { "element_type": "angle", "element_id": "angle_WYX", "animation_type": "highlight_and_label" }
+          ]
+        },
+        {
+          "text": "Since we know two sides and a non-included angle (an SSA case), the Law of Sines is the perfect tool to use.",
+          "khan_academy_text": "$\\text{Use the Law of Sines: } \\frac{a}{\\sin A} = \\frac{b}{\\sin B}$",
+          "geometric_elements": []
+        },
+        {
+          "text": "We can set up a proportion: the sine of angle XWY over its opposite side XY is equal to the sine of angle WYX over its opposite side WX.",
+          "khan_academy_text": "$\\frac{\\sin(\\angle XWY)}{XY} = \\frac{\\sin(\\angle WYX)}{WX}$",
+          "geometric_elements": [
+            { "element_type": "angle", "element_id": "angle_XWY", "animation_type": "highlight" },
+            { "element_type": "line", "element_id": "line_XY", "animation_type": "highlight" },
+            { "element_type": "angle", "element_id": "angle_WYX", "animation_type": "highlight" },
+            { "element_type": "line", "element_id": "line_WX", "animation_type": "highlight" }
+          ]
+        },
+        {
+          "text": "Plugging in the known values, we get the sine of angle XWY over 5 equals the sine of 70 degrees over 6.",
+          "khan_academy_text": "$\\frac{\\sin(\\angle XWY)}{5} = \\frac{\\sin(70^\\circ)}{6}$",
+          "geometric_elements": []
+        },
+        {
+          "text": "To solve for angle XWY, we first multiply both sides by 5, and then take the inverse sine.",
+          "khan_academy_text": "$\\angle XWY = \\arcsin\\left(\\frac{5 \\times \\sin(70^\\circ)}{6}\\right)$",
+          "geometric_elements": []
+        },
+        {
+          "text": "Calculating this gives us an angle of approximately 51.5 degrees.",
+          "khan_academy_text": "$\\angle XWY \\approx 51.5^\\circ$",
+          "geometric_elements": [
+            { "element_type": "angle", "element_id": "angle_XWY", "animation_type": "highlight_and_label" }
+          ]
+        }
+      ],
+      "starting_diagram": []
+    },
+    {
+      "step_id": "part_b_pyramid_setup",
+      "sentences": [
+        {
+          "text": "Now for part (b), we're looking at a pyramid WXYZ built on the triangular base WXY.",
+          "khan_academy_text": "$\\text{Part (b): Pyramid } WXYZ$",
+          "geometric_elements": [
+            { "element_type": "point", "element_id": "point_Z", "animation_type": "draw_and_label" },
+            { "element_type": "line", "element_id": "line_WZ", "animation_type": "draw" },
+            { "element_type": "line", "element_id": "line_XZ", "animation_type": "draw" },
+            { "element_type": "line", "element_id": "line_YZ", "animation_type": "draw" }
+          ]
+        },
+        {
+          "text": "We're told that sides WZ, XZ, and YZ are all equal. This is a special property! It means the apex Z is directly above the circumcenter of the base triangle. Let's call this circumcenter point M.",
+          "khan_academy_text": "$WZ = XZ = YZ \\implies M = \\text{circumcenter of } \\triangle WXY$",
+          "geometric_elements": [
+            { "element_type": "line", "element_id": "line_WZ", "animation_type": "highlight" },
+            { "element_type": "line", "element_id": "line_XZ", "animation_type": "highlight" },
+            { "element_type": "line", "element_id": "line_YZ", "animation_type": "highlight" },
+            { "element_type": "point", "element_id": "point_M", "animation_type": "draw_and_label" },
+            { "element_type": "construction_line", "element_id": "line_ZM", "animation_type": "draw" }
+          ]
+        },
+        {
+          "text": "The problem states the angle between the edge WZ and the base plane WXY is 30 degrees. This angle is formed by the line WZ and its projection onto the base, which is WM. So, angle ZWM is 30 degrees.",
+          "khan_academy_text": "$\\angle ZWM = 30^\\circ$",
+          "geometric_elements": [
+            { "element_type": "construction_line", "element_id": "line_WM", "animation_type": "draw" },
+            { "element_type": "angle", "element_id": "angle_ZWM", "animation_type": "highlight_and_label" }
+          ]
+        },
+        {
+          "text": "To find the pyramid's height, ZM, we first need the length of WM, which is the circumradius of the base triangle. We can find this using the extended Law of Sines on triangle WXY.",
+          "khan_academy_text": "$\\text{Find circumradius } R = WM$",
+          "geometric_elements": [
+            { "element_type": "region", "element_id": "region_triangle_WXY_interior", "animation_type": "highlight" }
+          ]
+        },
+        {
+          "text": "The formula is side WX divided by the sine of its opposite angle WYX equals two times the circumradius, R.",
+          "khan_academy_text": "$\\frac{WX}{\\sin(\\angle WYX)} = 2R$",
+          "geometric_elements": []
+        },
+        {
+          "text": "Plugging in our values, 6 divided by the sine of 70 degrees equals 2R. Solving for R gives us a circumradius of about 3.19 cm.",
+          "khan_academy_text": "$R = \\frac{6}{2 \\sin(70^\\circ)} \\approx 3.19\\text{ cm}$",
+          "geometric_elements": [
+            { "element_type": "construction_line", "element_id": "line_WM", "animation_type": "highlight_and_label" }
+          ]
+        },
+        {
+          "text": "Now we can find the height ZM. In the right-angled triangle ZMW, the tangent of 30 degrees is the opposite side ZM over the adjacent side WM.",
+          "khan_academy_text": "$\\text{In } \\triangle ZMW, \\tan(30^\\circ) = \\frac{ZM}{WM}$",
+          "geometric_elements": [
+            { "element_type": "region", "element_id": "region_triangle_ZMW_interior", "animation_type": "highlight" }
+          ]
+        },
+        {
+          "text": "Solving for ZM, we get R times the tangent of 30 degrees, which is approximately 1.84 cm.",
+          "khan_academy_text": "$ZM = WM \\times \\tan(30^\\circ) \\approx 3.19 \\times 0.577 \\approx 1.84\\text{ cm}$",
+          "geometric_elements": [
+            { "element_type": "construction_line", "element_id": "line_ZM", "animation_type": "highlight_and_label" }
+          ]
+        }
+      ],
+      "starting_diagram": ["point_W", "point_W_label", "point_X", "point_X_label", "point_Y", "point_Y_label", "line_WX", "line_XY", "line_WY", "region_triangle_WXY_interior", "line_WX_measurement_label", "line_XY_measurement_label", "angle_WYX_measurement_label", "angle_XWY_measurement_label"]
+    },
+    {
+      "step_id": "part_b_find_dihedral_angle",
+      "sentences": [
+        {
+          "text": "The final task is to determine if the angle between the base triangle WXY and the face triangle XYZ exceeds 45 degrees.",
+          "khan_academy_text": "$\\text{Find angle between plane } WXY \\text{ and plane } XYZ$",
+          "geometric_elements": [
+            { "element_type": "region", "element_id": "region_triangle_WXY_interior", "animation_type": "highlight" },
+            { "element_type": "region", "element_id": "region_triangle_XYZ_interior", "animation_type": "highlight" }
+          ]
+        },
+        {
+          "text": "This angle is the dihedral angle along the line of intersection, XY. To measure it, we need two lines, one in each plane, that are both perpendicular to XY at the same point.",
+          "khan_academy_text": "$\\text{Angle is the dihedral angle along edge } XY$",
+          "geometric_elements": [
+            { "element_type": "line", "element_id": "line_XY", "animation_type": "highlight" }
+          ]
+        },
+        {
+          "text": "Let's find the midpoint of XY and call it N. In the isosceles triangle XYZ, the median ZN is perpendicular to the base XY. In the base plane, the line from the circumcenter M to N is also perpendicular to the chord XY.",
+          "khan_academy_text": ["$N = \\text{midpoint of } XY$", "$ZN \\perp XY$", "$MN \\perp XY$"],
+          "geometric_elements": [
+            { "element_type": "point", "element_id": "point_N", "animation_type": "draw_and_label" },
+            { "element_type": "construction_line", "element_id": "line_ZN", "animation_type": "draw" },
+            { "element_type": "construction_line", "element_id": "line_MN", "animation_type": "draw" }
+          ]
+        },
+        {
+          "text": "So, the angle we need to find is angle ZNM, which we can find inside the right-angled triangle ZMN.",
+          "khan_academy_text": "$\\text{Find } \\angle ZNM \\text{ in right } \\triangle ZMN$",
+          "geometric_elements": [
+            { "element_type": "region", "element_id": "region_triangle_ZMN_interior", "animation_type": "highlight" },
+            { "element_type": "angle", "element_id": "angle_ZNM", "animation_type": "highlight" }
+          ]
+        },
+        {
+          "text": "We know the height ZM. We need the length of MN. We can find it using the right-angled triangle MNY. The hypotenuse MY is the circumradius R, and NY is half of XY, which is 2.5 cm.",
+          "khan_academy_text": "$\\text{In right } \\triangle MNY, MY = R, NY = \\frac{5}{2} = 2.5$",
+          "geometric_elements": [
+            { "element_type": "region", "element_id": "region_triangle_MNY_interior", "animation_type": "highlight" }
+          ]
+        },
+        {
+          "text": "By the Pythagorean theorem, MN squared equals R squared minus NY squared. This gives MN as approximately 1.99 cm.",
+          "khan_academy_text": "$MN = \\sqrt{MY^2 - NY^2} = \\sqrt{3.19^2 - 2.5^2} \\approx 1.99\\text{ cm}$",
+          "geometric_elements": [
+            { "element_type": "construction_line", "element_id": "line_MN", "animation_type": "highlight_and_label" }
+          ]
+        },
+        {
+          "text": "Now, back in triangle ZMN, the tangent of angle ZNM is the opposite side ZM over the adjacent side MN.",
+          "khan_academy_text": "$\\tan(\\angle ZNM) = \\frac{ZM}{MN} = \\frac{1.84}{1.99}$",
+          "geometric_elements": [
+            { "element_type": "region", "element_id": "region_triangle_ZMN_interior", "animation_type": "highlight" }
+          ]
+        },
+        {
+          "text": "Taking the inverse tangent, we find that angle ZNM is approximately 42.8 degrees.",
+          "khan_academy_text": "$\\angle ZNM = \\arctan\\left(\\frac{1.84}{1.99}\\right) \\approx 42.8^\\circ$",
+          "geometric_elements": [
+            { "element_type": "angle", "element_id": "angle_ZNM", "animation_type": "highlight_and_label" }
+          ]
+        },
+        {
+          "text": "Since 42.8 degrees is less than 45 degrees, the angle between the two triangles does not exceed 45 degrees.",
+          "khan_academy_text": "$42.8^\\circ < 45^\\circ \\implies \\text{No, it does not exceed } 45^\\circ.$",
+          "geometric_elements": []
+        }
+      ],
+      "starting_diagram": ["point_W", "point_W_label", "point_X", "point_X_label", "point_Y", "point_Y_label", "point_Z", "point_Z_label", "point_M", "point_M_label", "line_WX", "line_XY", "line_WY", "line_WZ", "line_XZ", "line_YZ", "line_ZM", "line_WM", "region_triangle_WXY_interior", "line_WX_measurement_label", "line_XY_measurement_label", "angle_WYX_measurement_label", "angle_XWY_measurement_label", "angle_ZWM_measurement_label", "line_WM_measurement_label", "line_ZM_measurement_label"]
+    },
+    {
+      "step_id": "key_takeaways",
+      "sentences": [
+        {
+          "text": "Let's summarize the key ideas. We used the Law of Sines to find an unknown angle in a triangle when given two sides and a non-included angle.",
+          "khan_academy_text": "$\\text{Key Method 1: Law of Sines for SSA case}$",
+          "geometric_elements": [
+            { "element_type": "region", "element_id": "region_triangle_WXY_interior", "animation_type": "highlight" }
+          ]
+        },
+        {
+          "text": "For the 3D problem, we identified that the apex of the pyramid was above the circumcenter of the base, which was a crucial insight.",
+          "khan_academy_text": "$\\text{Key Insight: Equal slant edges } \\implies \\text{Apex above circumcenter}$",
+          "geometric_elements": [
+            { "element_type": "point", "element_id": "point_Z", "animation_type": "highlight" },
+            { "element_type": "point", "element_id": "point_M", "animation_type": "highlight" },
+            { "element_type": "construction_line", "element_id": "line_ZM", "animation_type": "highlight" }
+          ]
+        },
+        {
+          "text": "We then broke the 3D geometry down into several 2D right-angled triangles, using trigonometry and Pythagoras's theorem to find the necessary lengths and angles.",
+          "khan_academy_text": "$\\text{Key Strategy: Deconstruct 3D problem into 2D right triangles}$",
+          "geometric_elements": [
+            { "element_type": "region", "element_id": "region_triangle_ZMW_interior", "animation_type": "highlight" },
+            { "element_type": "region", "element_id": "region_triangle_MNY_interior", "animation_type": "highlight" },
+            { "element_type": "region", "element_id": "region_triangle_ZMN_interior", "animation_type": "highlight" }
+          ]
+        }
+      ],
+      "starting_diagram": ["point_W", "point_W_label", "point_X", "point_X_label", "point_Y", "point_Y_label", "point_Z", "point_Z_label", "point_M", "point_M_label", "point_N", "point_N_label", "line_WX", "line_XY", "line_WY", "line_WZ", "line_XZ", "line_YZ", "line_ZM", "line_WM", "line_ZN", "line_MN", "region_triangle_WXY_interior", "line_WX_measurement_label", "line_XY_measurement_label", "angle_WYX_measurement_label", "angle_XWY_measurement_label", "angle_ZWM_measurement_label", "line_WM_measurement_label", "line_ZM_measurement_label", "line_MN_measurement_label", "angle_ZNM_measurement_label"]
+    }
+  ]
+}
+```
+
+### **OUTPUT 2: TTS-Friendly Script**
+
+```json
+{
+  "solution_steps": [
+    {
+      "step_id": "part_a_find_angle_XWY",
+      "sentences": [
+        {
+          "text": "Hello! Let's solve this problem step-by-step. First, for part (a), we need to find the size of angle X W Y in triangle W X Y."
+        },
+        {
+          "text": "We are given the lengths of two sides, W X equals 6 centimeters and X Y equals 5 centimeters, and one angle, angle W Y X, which is 70 degrees."
+        },
+        {
+          "text": "Since we know two sides and a non-included angle (an S S A case), the Law of Sines is the perfect tool to use."
+        },
+        {
+          "text": "We can set up a proportion: the sine of angle X W Y over its opposite side X Y is equal to the sine of angle W Y X over its opposite side W X."
+        },
+        {
+          "text": "Plugging in the known values, we get the sine of angle X W Y over 5 equals the sine of 70 degrees over 6."
+        },
+        {
+          "text": "To solve for angle X W Y, we first multiply both sides by 5, and then take the inverse sine."
+        },
+        {
+          "text": "Calculating this gives us an angle of approximately 51 point 5 degrees."
+        }
+      ]
+    },
+    {
+      "step_id": "part_b_pyramid_setup",
+      "sentences": [
+        {
+          "text": "Now for part (b), we're looking at a pyramid W X Y Z built on the triangular base W X Y."
+        },
+        {
+          "text": "We're told that sides W Z, X Z, and Y Z are all equal. This is a special property! It means the apex Z is directly above the circumcenter of the base triangle. Let's call this circumcenter point M."
+        },
+        {
+          "text": "The problem states the angle between the edge W Z and the base plane W X Y is 30 degrees. This angle is formed by the line W Z and its projection onto the base, which is W M. So, angle Z W M is 30 degrees."
+        },
+        {
+          "text": "To find the pyramid's height, Z M, we first need the length of W M, which is the circumradius of the base triangle. We can find this using the extended Law of Sines on triangle W X Y."
+        },
+        {
+          "text": "The formula is side W X divided by the sine of its opposite angle W Y X equals two times the circumradius, R."
+        },
+        {
+          "text": "Plugging in our values, 6 divided by the sine of 70 degrees equals 2 R. Solving for R gives us a circumradius of about 3 point 1 9 centimeters."
+        },
+        {
+          "text": "Now we can find the height Z M. In the right-angled triangle Z M W, the tangent of 30 degrees is the opposite side Z M over the adjacent side W M."
+        },
+        {
+          "text": "Solving for Z M, we get R times the tangent of 30 degrees, which is approximately 1 point 8 4 centimeters."
+        }
+      ]
+    },
+    {
+      "step_id": "part_b_find_dihedral_angle",
+      "sentences": [
+        {
+          "text": "The final task is to determine if the angle between the base triangle W X Y and the face triangle X Y Z exceeds 45 degrees."
+        },
+        {
+          "text": "This angle is the dihedral angle along the line of intersection, X Y. To measure it, we need two lines, one in each plane, that are both perpendicular to X Y at the same point."
+        },
+        {
+          "text": "Let's find the midpoint of X Y and call it N. In the isosceles triangle X Y Z, the median Z N is perpendicular to the base X Y. In the base plane, the line from the circumcenter M to N is also perpendicular to the chord X Y."
+        },
+        {
+          "text": "So, the angle we need to find is angle Z N M, which we can find inside the right-angled triangle Z M N."
+        },
+        {
+          "text": "We know the height Z M. We need the length of M N. We can find it using the right-angled triangle M N Y. The hypotenuse M Y is the circumradius R, and N Y is half of X Y, which is 2 point 5 centimeters."
+        },
+        {
+          "text": "By the Pythagorean theorem, M N squared equals R squared minus N Y squared. This gives M N as approximately 1 point 9 9 centimeters."
+        },
+        {
+          "text": "Now, back in triangle Z M N, the tangent of angle Z N M is the opposite side Z M over the adjacent side M N."
+        },
+        {
+          "text": "Taking the inverse tangent, we find that angle Z N M is approximately 42 point 8 degrees."
+        },
+        {
+          "text": "Since 42 point 8 degrees is less than 45 degrees, the angle between the two triangles does not exceed 45 degrees."
+        }
+      ]
+    },
+    {
+      "step_id": "key_takeaways",
+      "sentences": [
+        {
+          "text": "Let's summarize the key ideas. We used the Law of Sines to find an unknown angle in a triangle when given two sides and a non-included angle."
+        },
+        {
+          "text": "For the 3D problem, we identified that the apex of the pyramid was above the circumcenter of the base, which was a crucial insight."
+        },
+        {
+          "text": "We then broke the 3D geometry down into several 2D right-angled triangles, using trigonometry and Pythagoras's theorem to find the necessary lengths and angles."
+        }
+      ]
+    }
+  ]
+}
+```
