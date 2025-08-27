@@ -1,153 +1,186 @@
-# Geometry_v2 - AI-Powered Mathematical Video Generation
+# 🎯 AI Geometry Video Solution
 
-This repository contains an advanced system for generating educational mathematical videos using AI and Manim (Mathematical Animation Engine).
+A comprehensive web application that generates educational geometry videos from uploaded mathematical problem images using AI-powered content generation, audio synthesis, and geometric animations.
 
-## 🎯 Project Overview
+## 🚀 Features
 
-Geometry_v2 is a sophisticated framework that combines:
-- **AI-powered content generation** using multiple LLM providers (Claude, GPT, Gemini, DeepSeek)
-- **Mathematical animation** using Manim
-- **Audio synchronization** for educational content
-- **Parallel processing** for efficient video generation
+- **AI-Powered Solution Generation**: Automatically generates step-by-step mathematical solutions
+- **Audio Synthesis**: Creates natural-sounding voiceovers for explanations
+- **Geometric Animations**: Synchronized visual animations using Manim
+- **Real-time Progress Tracking**: Live progress updates during video generation
+- **Modern Web Interface**: Beautiful, responsive frontend with drag-and-drop upload
+- **Video Controls**: Full video player with speed controls (0.75x - 2.0x)
 
 ## 📁 Project Structure
 
 ```
-Geometry_v2/
-├── Audio/                    # Audio files for video narration
-├── Blueprint/                # Scene blueprints and planning
-├── Generated_Scenes/         # Generated Manim scene files
-├── Manim Code/              # Core Manim animation code
-├── Parallel_Outputs/        # Parallel processing outputs
-├── Scene/                   # Scene-specific audio files
-├── Video/                   # Final video outputs
-├── *.py                     # Main Python scripts
-├── *.json                   # Configuration and data files
-└── *.png                    # Mathematical diagrams
+geometry-flow/
+├── frontend/              # Lovable frontend (React/Vite)
+├── backend/               # Flask server + pipeline
+│   ├── server.py         # Main Flask application
+│   ├── requirements.txt  # Python dependencies
+│   ├── .env             # Environment variables
+│   ├── pipeline/        # All pipeline scripts
+│   ├── Final_Videos/    # Generated videos
+│   └── geometry_questions/ # Uploaded images
+└── README.md
 ```
-
-## 🚀 Key Features
-
-### 1. Multi-LLM Integration
-- **Claude** (Anthropic)
-- **GPT-4** (OpenAI)
-- **Gemini** (Google)
-- **DeepSeek**
-- **OpenRouter** API support
-
-### 2. Advanced Scene Generation
-- Automated mathematical diagram creation
-- Synchronized audio-visual content
-- Pedagogical content structuring
-- Parallel scene generation
-
-### 3. Mathematical Animation
-- Geometric figure rendering
-- Theorem visualization
-- Step-by-step proof animations
-- Interactive mathematical concepts
 
 ## 🛠️ Installation
 
 ### Prerequisites
+
 - Python 3.8+
-- Manim
-- OpenAI API key
-- Anthropic API key (for Claude)
-- Google API key (for Gemini)
+- Node.js 16+
+- FFmpeg (for video processing)
+- Manim (for geometric animations)
 
-### Setup
-```bash
-# Clone the repository
-git clone <your-repo-url>
-cd Geometry_v2
+### Backend Setup
 
-# Install dependencies
-pip install -r requirements.txt
+1. **Navigate to backend directory:**
+   ```bash
+   cd backend
+   ```
 
-# Set up API keys
-export OPENAI_API_KEY="your-openai-key"
-export ANTHROPIC_API_KEY="your-anthropic-key"
-export GOOGLE_API_KEY="your-google-key"
-```
+2. **Install Python dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Set up environment variables:**
+   Create a `.env` file in the backend directory with your API keys:
+   ```env
+   OPENROUTER_API_KEY=your_openrouter_api_key
+   ELEVEN_LABS_API_KEY=your_elevenlabs_api_key
+   ```
+
+4. **Install Manim:**
+   ```bash
+   pip install manim
+   ```
+
+5. **Install FFmpeg:**
+   - **macOS:** `brew install ffmpeg`
+   - **Ubuntu:** `sudo apt install ffmpeg`
+   - **Windows:** Download from https://ffmpeg.org/
+
+### Frontend Setup
+
+1. **Navigate to frontend directory:**
+   ```bash
+   cd frontend
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+## 🚀 Running the Application
+
+### Development Mode
+
+1. **Start the backend server:**
+   ```bash
+   cd backend
+   python server.py
+   ```
+   The server will run on `http://localhost:5000`
+
+2. **Start the frontend (optional - backend serves the frontend):**
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+
+3. **Access the application:**
+   Open your browser and go to `http://localhost:5000`
+
+### Production Mode
+
+1. **Build the frontend:**
+   ```bash
+   cd frontend
+   npm run build
+   ```
+
+2. **Start the backend server:**
+   ```bash
+   cd backend
+   python server.py
+   ```
 
 ## 📖 Usage
 
-### Basic Scene Generation
-```python
-# Generate a single scene
-python generate_single_manim_scene_claude.py
+1. **Upload Image**: Drag and drop or click to upload a geometry problem image
+2. **Generate Video**: Click the "Generate Video" button to start processing
+3. **Monitor Progress**: Watch the progress bar as the AI processes your image
+4. **View Result**: The generated video will automatically play when ready
+5. **Video Controls**: Use the video player controls to pause, play, seek, and adjust speed
 
-# Generate all blueprints
-python generate_all_blueprints_batch_v2.py
+## 🔧 Pipeline Overview
 
-# Run the orchestrator
-python geo_v3_orchestrator.py
-```
+The application uses a comprehensive 4-step pipeline:
 
-### Parallel Processing
-```python
-# Generate scenes in parallel
-python parallel_prompts.py
-```
+1. **Solution Generation**: AI analyzes the image and generates step-by-step solutions
+2. **Parallel Processing**: Geometry analysis and audio generation run simultaneously
+3. **Video Code Generation**: Creates Manim animation code with timing synchronization
+4. **Scene Rendering**: Renders all scenes in parallel and concatenates into final video
 
-## 🎨 Customization
+## 🎨 Supported File Types
 
-### Style Configuration
-Edit `geo_v2_style.json` to customize:
-- Color schemes
-- Font sizes and styles
-- Layout spacing
-- Animation timing
+- **Images**: PNG, JPG, JPEG, GIF, BMP, TIFF
+- **Output**: MP4 video files
 
-### Content Generation
-Modify prompt files to adjust:
-- Mathematical content
-- Pedagogical approach
-- Animation complexity
-- Audio narration style
+## 🔒 Security Features
 
-## 📊 Output Formats
+- File type validation
+- Unique filename generation with timestamps
+- Temporary file cleanup after processing
+- Error handling and user feedback
 
-The system generates:
-- **Manim scene files** (.py)
-- **Audio files** (.mp3)
-- **Video files** (.mp4)
-- **JSON blueprints** for scene planning
-- **Mathematical diagrams** (.png, .svg)
+## 🐛 Troubleshooting
 
-## 🔧 Configuration Files
+### Common Issues
 
-- `geo_v2_style.json` - Visual styling configuration
-- `deconstruct_parallel.json` - Scene structure and timing
-- `all_blueprints_combined.json` - Complete scene blueprints
-- `sentence.json` - Audio timing and content
+1. **API Key Errors**: Ensure your `.env` file contains valid API keys
+2. **FFmpeg Not Found**: Install FFmpeg and ensure it's in your system PATH
+3. **Manim Installation**: Some systems may require additional dependencies for Manim
+4. **Memory Issues**: Large images or complex problems may require more system memory
+
+### Error Messages
+
+- **"Error encountered. Please try again."**: Generic error message for user-facing issues
+- **"Upload failed"**: File upload or validation error
+- **"Video not found"**: Generated video file missing or corrupted
+
+## 📝 API Endpoints
+
+- `GET /` - Main application page
+- `POST /upload` - File upload endpoint
+- `GET /progress/<session_id>` - Progress tracking
+- `GET /video/<filename>` - Video streaming
+- `GET /health` - Health check
 
 ## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Add tests if applicable
+4. Test thoroughly
 5. Submit a pull request
 
-## 📝 License
+## 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🙏 Acknowledgments
 
-- **Manim Community** for the mathematical animation engine
-- **OpenAI, Anthropic, Google** for AI capabilities
-- **Mathematical community** for educational content inspiration
+- **Manim**: Mathematical animation library
+- **ElevenLabs**: AI voice synthesis
+- **OpenRouter**: AI model access
+- **Lovable**: Frontend framework
 
 ## 📞 Support
 
-For questions or issues:
-1. Check the existing issues
-2. Create a new issue with detailed description
-3. Include error logs and configuration details
-
----
-
-**Note**: This project requires API keys for AI services. Please ensure you have valid API credentials before running the scripts. 
+For support or questions, please open an issue on the GitHub repository. 

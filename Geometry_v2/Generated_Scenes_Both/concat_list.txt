@@ -1,2 +1,0 @@
-file '/Users/kairos/Desktop/Prompt Generation/media/videos/part_a_understand_goal_gemini_generated/480p15/PartAUnderstandGoal.mp4'
-file '/Users/kairos/Desktop/Prompt Generation/media/videos/part_a_identify_givens_gemini_generated/480p15/PartAIdentifyGivens.mp4'
