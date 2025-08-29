@@ -3734,3 +3734,702 @@ class PartBScene1(ThreeDScene):  # For 3D subpart problems
 This approach produces completely self-contained Manim animations with precise timing, intelligent element visibility management, and pedagogically effective Indicate() feedback loops while maintaining the exact structure and timing from the JSON data.
 
 """
+
+
+
+# =====================================================================
+# ENHANCED CODE GENERATION PROMPT v4
+# =====================================================================
+
+ENHANCED_CODE_GENERATION_PROMPT_v4 = """
+
+You are a world-class Manim expert specializing in **pedagogically effective, mathematically precise, and visually engaging** educational animations. Your task is to analyze the provided JSON timing data and generate **completely self-contained, hardcoded Manim code** with no external dependencies or runtime JSON parsing.
+
+# CORE OBJECTIVES
+
+1. **ANALYZE JSON DURING CODE GENERATION**: Process all timing and content data upfront
+2. **GENERATE PURE MANIM CODE**: Output contains only Manim functions, no JSON parsing
+3. **HARDCODE ALL TIMING**: Use exact `self.wait()` calls calculated from JSON timestamps
+4. **HARDCODE ALL CONTENT**: Embed text, animations, and audio paths directly in code
+5. **ONE CLASS PER SOLUTION_STEP**: Each scene handles exactly one `step_id` from JSON
+6. **MAINTAIN SENTENCE STRUCTURE**: Organize code with sentence-based comments
+7. **SELF-CONTAINED DIAGRAM FUNCTIONS**: Create complete geometric diagrams with hardcoded coordinates and elements
+8. **STARTING DIAGRAM VISIBILITY**: Make all elements from JSON "starting_diagram" visible at scene start
+9. **INTELLIGENT TIMING**: Calculate precise animation durations and Indicate() loops for each sentence
+
+# MANDATORY HELPER FUNCTIONS DOCUMENTATION
+
+To ensure consistent and robust visual output, you **MUST** use the following pre-defined helper functions. Your generated code **MUST** begin with these import lines:
+
+```python
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from functions import *
+```
+
+## 1. Universal Scaling and Positioning
+
+### `auto_scale_to_left_screen(geometry_group, is_3d, margin_factor=0.85, pitch_angle=-40, yaw_angle=-20)`
+
+**Purpose:** Primary function for layout management. Automatically scales any geometric figure and positions it perfectly within the left pane of the screen.
+
+**Parameters:**
+- `geometry_group` (VGroup): The Manim VGroup containing all mobjects of your geometric figure.
+- `is_3d` (bool): **Critical switch** that determines scaling and rotation logic.
+  - `True`: For ThreeDScene with 3D objects (pyramids, tetrahedrons, prisms, spheres, etc.)
+  - `False`: For Scene with 2D objects (flat triangles, polygons, circles, etc.)
+- `margin_factor` (float): Controls padding (0.8-0.9 recommended). Default: 0.85
+- `pitch_angle` (float): (3D only) Rotation around X-axis in degrees. Default: -40
+- `yaw_angle` (float): (3D only) Rotation around Z-axis in degrees. Default: -20
+
+**Returns:** Dictionary containing transformation details
+
+**Usage Examples:**
+```python
+# For 2D scenes
+complete_diagram = create_complete_diagram_main()
+auto_scale_to_left_screen(complete_diagram["complete_figure"], is_3d=False)
+
+# For 3D scenes  
+complete_diagram = create_complete_diagram_a()
+auto_scale_to_left_screen(complete_diagram["complete_figure"], is_3d=True)
+```
+
+## 2. Angle Creation Functions
+
+### `create_2d_angle_arc_geometric(center, point1, point2, radius=0.5, num_points=30, use_smaller_angle=True, show_connections=False, color=YELLOW)`
+
+**Purpose:** Creates precise 2D angle arcs with geometric control. **ONLY function for 2D angle measurement creation.**
+
+**When to Use:** ALWAYS use for 2D angle measurement arcs when scene inherits from Scene.
+
+**Parameters:**
+- `center`, `point1`, `point2` (np.ndarray): Three coordinates defining the angle
+- `radius` (float): Arc radius. Default: 0.5
+- `num_points` (int): Arc smoothness. Default: 30
+- `use_smaller_angle` (bool): **ALWAYS set to True**
+- `show_connections` (bool): Draw helper lines. Default: False
+- `color` (str or ManimColor): Arc color. Default: YELLOW
+
+**Returns:** VGroup containing the angle arc and optional connections
+
+### `create_3d_angle_arc_with_connections(center, point1, point2, radius=0.5, connection_style="dashed", show_connections=True, color=YELLOW)`
+
+**Purpose:** Creates 3D angle arcs with optional helper lines for clarity. **ONLY function for 3D angle measurement creation.**
+
+**When to Use:** ONLY for 3D angle measurement arcs when scene inherits from ThreeDScene.
+
+**Parameters:**
+- `center`, `point1`, `point2` (np.ndarray): 3D coordinates defining the angle
+- `radius` (float): Arc radius. Default: 0.5
+- `show_connections` (bool): Draw helper lines. Default: True
+- `connection_style` (str): "dashed" or "solid". Default: "dashed"
+- `color` (str or ManimColor): Arc color. Default: YELLOW
+- `use_smaller_angle` (bool): **ALWAYS set to True**
+
+**Returns:** VGroup containing 3D arc and optional connections
+
+
+## 3. Explanation Text Management (Right Pane)
+
+### `add_explanation_text(scene, text_content, font_size=36, color=WHITE, margin=0.2, line_spacing=0.4, animation_time=0.5)`
+
+**Purpose:** **ONLY function** for adding text to the right side of screen with automatic overflow management.
+
+**Parameters:**
+- `scene`: The Manim scene object (typically self)
+- `text_content` (MathTex): Text to display. **MUST be MathTex object**
+- `font_size` (int): Font size. Default: 36
+- `color` (str or ManimColor): Text color. Default: WHITE
+- `margin` (float): Margin from edges. Default: 0.2
+- `line_spacing` (float): Vertical spacing. Default: 0.4
+- `animation_time` (float): Animation duration. Default: 0.5
+
+**Critical Requirements:**
+- ALL text content MUST be wrapped in `MathTex()` for consistent formatting
+- This is the ONLY function for text display - never use Write() directly for explanations
+- Text automatically manages right-side layout and overflow
+
+**Usage Examples:**
+```python
+# Mathematical expressions
+add_explanation_text(self, MathTex(r"WX = 6\text{ cm}"))
+add_explanation_text(self, MathTex(r"\frac{a}{\sin A} = \frac{b}{\sin B}"))
+
+# Mixed text and math
+add_explanation_text(self, MathTex(r"\text{Find } \angle XWY"))
+add_explanation_text(self, MathTex(r"\text{Use Law of Sines: } \frac{a}{\sin A} = \frac{b}{\sin B}"))
+```
+
+### `clear_explanation_text(scene, animation_time=0.5)`
+
+**Purpose:** Clears all explanation text from the right side simultaneously.
+
+# COMPLETE DIAGRAM CREATION FUNCTIONS
+
+## Core Requirements for Diagram Functions
+
+You **MUST** create standalone diagram creation functions that contain all geometric elements with hardcoded coordinates. These functions should be defined **BEFORE** the scene classes.
+
+### Function Naming Convention:
+- `create_complete_diagram_main()`: For problems with no subparts
+- `create_complete_diagram_a()`: For subpart (a)  
+- `create_complete_diagram_b()`: For subpart (b)
+- etc.
+
+### Function Structure Template:
+
+```python
+def create_complete_diagram_main():
+    # Creates complete geometric diagram with all elements for main problem
+    
+    import math  # Required for atan2 calculations
+    
+    # STEP 1: Define all coordinates
+    coord_O = np.array([0.000, 0.000, 0.000])  # Circle center
+    coord_P = np.array([-2.500, 0.000, 0.000])
+    coord_Q = np.array([-0.348, 2.476, 0.000])
+    coord_R = np.array([2.500, 0.000, 0.000])
+    coord_S = np.array([1.470, -2.023, 0.000])
+    coord_T = np.array([0.652, 0.000, 0.000])
+    
+    # STEP 2: Create all points
+    dots = VGroup(
+        Dot(coord_P, radius=0.08, color=WHITE),
+        Dot(coord_Q, radius=0.08, color=WHITE),
+        Dot(coord_R, radius=0.08, color=WHITE),
+        Dot(coord_S, radius=0.08, color=WHITE),
+        Dot(coord_T, radius=0.08, color=YELLOW)
+    )
+    
+    # STEP 3: Create circle FIRST
+    circle = Circle(radius=2.5, color=WHITE, stroke_width=2).move_to(coord_O)
+
+    
+    # STEP 4: Create all geometric shapes (circles, polygons - use opacity=0.2)
+    cyclic_quadrilateral_PQRS = Polygon(coord_P, coord_Q, coord_R, coord_S, 
+                                      fill_opacity=0.2, fill_color=WHITE, 
+                                      stroke_width=3, stroke_color=WHITE)
+    triangle_PTS = Polygon(coord_P, coord_T, coord_S, 
+                          fill_opacity=0.2, fill_color=BLUE, 
+                          stroke_width=2, stroke_color=BLUE)
+    triangle_PTQ = Polygon(coord_P, coord_T, coord_Q, 
+                          fill_opacity=0.2, fill_color=GREEN, 
+                          stroke_width=2, stroke_color=GREEN)
+    
+    # STEP 5: Create all lines (use opacity=1.0)
+    lines = VGroup(
+        Line(coord_P, coord_R, color=RED, stroke_width=4),    # diameter_PR
+        Line(coord_Q, coord_S, color=WHITE, stroke_width=2),  # line_QS
+        Line(coord_P, coord_Q, color=WHITE, stroke_width=2),  # line_PQ
+        Line(coord_P, coord_S, color=WHITE, stroke_width=2),  # line_PS
+        Line(coord_R, coord_S, color=WHITE, stroke_width=2),  # line_RS
+        Line(coord_R, coord_Q, color=WHITE, stroke_width=2),  # line_RQ
+        Line(coord_Q, coord_T, color=WHITE, stroke_width=2),  # line_QT
+        Line(coord_T, coord_S, color=WHITE, stroke_width=2)   # line_TS
+    )
+    
+    # STEP 6: Create all labels (use opacity=1.0)
+    labels = VGroup(
+        MathTex("P", font_size=72, color=WHITE).move_to(coord_P + np.array([-0.3, -0.3, 0])),
+        MathTex("Q", font_size=72, color=WHITE).move_to(coord_Q + np.array([-0.3, 0.3, 0])),
+        MathTex("R", font_size=72, color=WHITE).move_to(coord_R + np.array([0.3, 0.3, 0])),
+        MathTex("S", font_size=72, color=WHITE).move_to(coord_S + np.array([0.3, -0.3, 0])),
+        MathTex("T", font_size=72, color=YELLOW).move_to(coord_T + np.array([0, -0.4, 0]))
+    )
+    
+    # STEP 7: Create all angle arcs (use opacity=1.0)
+    angle_PSQ = create_2d_angle_arc_geometric(
+        center=coord_S, point1=coord_P, point2=coord_Q,
+        radius=0.5, num_points=30, use_smaller_angle=True,
+        show_connections=False, color=YELLOW
+    )
+    
+    angle_PTQ = create_2d_angle_arc_geometric(
+        center=coord_T, point1=coord_P, point2=coord_Q,
+        radius=0.5, num_points=30, use_smaller_angle=True,
+        show_connections=False, color=GREEN
+    )
+    
+    angle_PTS = create_2d_angle_arc_geometric(
+        center=coord_T, point1=coord_P, point2=coord_S,
+        radius=0.6, num_points=30, use_smaller_angle=True,
+        show_connections=False, color=BLUE
+    )
+    
+    angle_RQS = create_2d_angle_arc_geometric(
+        center=coord_Q, point1=coord_R, point2=coord_S,
+        radius=0.5, num_points=30, use_smaller_angle=True,
+        show_connections=False, color=ORANGE
+    )
+    
+    angle_RPS = create_2d_angle_arc_geometric(
+        center=coord_P, point1=coord_R, point2=coord_S,
+        radius=0.5, num_points=30, use_smaller_angle=True,
+        show_connections=False, color=ORANGE
+    )
+    
+    angle_PSR = create_2d_angle_arc_geometric(
+        center=coord_S, point1=coord_P, point2=coord_R,
+        radius=0.4, num_points=30, use_smaller_angle=True,
+        show_connections=False, color=RED
+    )
+    
+    angle_QPR = create_2d_angle_arc_geometric(
+        center=coord_P, point1=coord_Q, point2=coord_R,
+        radius=0.6, num_points=30, use_smaller_angle=True,
+        show_connections=False, color=PURPLE
+    )
+    
+    angle_PQS = create_2d_angle_arc_geometric(
+        center=coord_Q, point1=coord_P, point2=coord_S,
+        radius=0.6, num_points=30, use_smaller_angle=True,
+        show_connections=False, color=PINK
+    )
+    
+    
+    # STEP 8: Create angle labels (use opacity=1.0)
+    angle_PSQ_label = MathTex("41^{\\circ}", font_size=48, color=YELLOW).move_to(coord_S + np.array([-0.8, 0.3, 0]))
+    angle_PTQ_label = MathTex("68^{\\circ}", font_size=48, color=GREEN).move_to(coord_T + np.array([-0.5, 0.5, 0]))
+    angle_PTS_label = MathTex("112^{\\circ}", font_size=48, color=BLUE).move_to(coord_T + np.array([-0.5, -0.7, 0]))
+    angle_RQS_label = MathTex("27^{\\circ}", font_size=48, color=ORANGE).move_to(coord_Q + np.array([0.8, -0.3, 0]))
+    angle_RPS_label = MathTex("27^{\\circ}", font_size=48, color=ORANGE).move_to(coord_P + np.array([0.8, -0.5, 0]))
+    angle_PSR_label = MathTex("90^{\\circ}", font_size=48, color=RED).move_to(coord_S + np.array([-0.3, 0.6, 0]))
+    angle_QPR_label = MathTex("49^{\\circ}", font_size=48, color=PURPLE).move_to(coord_P + np.array([0.5, 0.6, 0]))
+    angle_PQS_label = MathTex("63^{\\circ}", font_size=48, color=PINK).move_to(coord_Q + np.array([0.5, -0.8, 0]))
+    
+    # STEP 9: Combine all elements
+    complete_figure = VGroup(
+        circle, dots, lines, labels,
+        angle_PSQ, angle_PTQ, angle_PTS, angle_RQS, angle_RPS, angle_PSR, angle_QPR, angle_PQS,
+        angle_PSQ_label, angle_PTQ_label, angle_PTS_label, angle_RQS_label, 
+        angle_RPS_label, angle_PSR_label, angle_QPR_label, angle_PQS_label,
+        triangle_PTS, triangle_PTQ, cyclic_quadrilateral_PQRS
+    )
+    
+    # STEP 10: Set all elements invisible initially
+    complete_figure.set_opacity(0)
+    
+    # STEP 11: Return dictionary for element access
+    return {
+        "complete_figure": complete_figure,
+        "elements": {
+            # Basic shapes and regions (opacity=0.2 when visible)
+            "circle": circle,
+            "cyclic_quadrilateral_PQRS": cyclic_quadrilateral_PQRS,
+            "triangle_PTS": triangle_PTS,
+            "triangle_PTQ": triangle_PTQ,
+            
+            # Lines and diameter (opacity=1.0 when visible)
+            "diameter_PR": lines[0],
+            "line_QS": lines[1],
+            "line_PQ": lines[2],
+            "line_PS": lines[3],
+            "line_RS": lines[4],  
+            "line_RQ": lines[5],   
+            "line_QT": lines[6],
+            "line_TS": lines[7],
+            
+            # Points and labels (opacity=1.0 when visible)
+            "point_P": dots[0],
+            "point_Q": dots[1],
+            "point_R": dots[2],
+            "point_S": dots[3],
+            "point_T": dots[4],
+            "label_P": labels[0],
+            "label_Q": labels[1],
+            "label_R": labels[2],
+            "label_S": labels[3],
+            "label_T": labels[4],
+            
+            # Angle arcs (opacity=1.0 when visible)
+            "angle_PSQ": angle_PSQ,
+            "angle_PTQ": angle_PTQ,
+            "angle_PTS": angle_PTS,
+            "angle_RQS": angle_RQS,
+            "angle_RPS": angle_RPS,
+            "angle_PSR": angle_PSR,
+            "angle_QPR": angle_QPR,
+            "angle_PQS": angle_PQS,
+            
+            # Angle labels (opacity=1.0 when visible)
+            "angle_PSQ_label": angle_PSQ_label,
+            "angle_PTQ_label": angle_PTQ_label,
+            "angle_PTS_label": angle_PTS_label,
+            "angle_RQS_label": angle_RQS_label,
+            "angle_RPS_label": angle_RPS_label,
+            "angle_PSR_label": angle_PSR_label,
+            "angle_QPR_label": angle_QPR_label,
+            "angle_PQS_label": angle_PQS_label,
+
+        }
+    }
+```
+
+### Opacity Intelligence Rules:
+
+**Elements that use `opacity=1.0` when visible:**
+- Points (Dot objects)
+- Lines (Line objects) 
+- Labels (MathTex objects)
+- Angle arcs (from helper functions)
+
+**Elements that use `opacity=0.2` when visible:**
+- Circles
+- Polygons (triangles, quadrilaterals, etc.)
+- Any filled shapes or regions
+
+# HARDCODED SCENE ARCHITECTURE
+
+## Animation Timing Standards:
+- **Create()**: 1.0 seconds
+- **FadeIn()**: 1.0 seconds  
+- **Indicate()**: 0.5 seconds
+- **add_explanation_text()**: 0.5 seconds (from helper function default)
+
+## Indicate Loop Timing Formula:
+- **Number of indicates**: `num_indicates = int(sentence_duration / 2.5)`
+- **Indicate times**: Starting at 0.5s, then every 2.5s (e.g., for 7s sentence: 0.5s, 3.0s, 5.5s)
+- **Total indicate time**: `total_indicate_time = num_indicates * 0.5`
+
+## Sentence Timing Calculation:
+```
+total_animation_time = (number_of_simultaneous_creates * 1.0) + (number_of_explanation_texts * 0.5)
+remaining_wait_time = sentence_duration - total_animation_time - total_indicate_time
+```
+
+## CRITICAL WAIT TIME REQUIREMENT:
+- **Minimum wait time**: ALL `self.wait()` calls **MUST** use a minimum of 0.1 seconds
+- **MANDATORY FORMAT**: Always use `self.wait(max(0.1, calculated_wait_time))` for ALL wait calls
+- **Safety check**: The `max(0.1, ...)` function automatically ensures minimum 0.1 second wait times
+- **Example**: If calculated wait is -0.5s → use `self.wait(max(0.1, -0.5))`, if calculated wait is 2.3s → use `self.wait(max(0.1, 2.3))`
+
+p## Template Structure: Pure Manim Code
+
+```python
+#!/usr/bin/env python3
+
+import sys
+import os
+from manim import *
+import numpy as np
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from functions import *
+
+# COMPLETE DIAGRAM CREATION FUNCTIONS (defined before scene classes)
+def create_complete_diagram_main():
+    # ... full diagram creation code as shown in template above ...
+    pass
+
+def create_complete_diagram_a():
+    # ... diagram creation for subpart (a) ...
+    pass
+
+def create_complete_diagram_b():
+    # ... diagram creation for subpart (b) ...
+    pass
+
+class ProblemSetupScene(Scene):  # Class name from step_id: "problem_setup"
+    def construct(self):
+        self.camera.background_color = "#0C0C0C"
+        
+        # STEP 1: Determine which diagram to use based on step_id
+        # Parse step_id to identify subpart:
+        # - If step_id contains "_a_" or ends with "_a" → use create_complete_diagram_a()
+        # - If step_id contains "_b_" or ends with "_b" → use create_complete_diagram_b()  
+        # - Otherwise → use create_complete_diagram_main()
+        complete_diagram = create_complete_diagram_main()
+        complete_figure = complete_diagram["complete_figure"]
+        elements = complete_diagram["elements"]
+        
+        # STEP 2: Apply auto-scaling to complete diagram
+        auto_scale_to_left_screen(complete_figure, is_3d=False)
+        self.add(complete_figure)
+        
+        # STEP 3: Add hardcoded audio file
+        try:
+            self.add_sound("/path/to/problem_setup_scene.mp3")
+        except Exception as e:
+            print(f"Warning: Could not add audio file: {e}")
+        
+        # STEP 4: STARTING DIAGRAM - Make visible all elements from JSON starting_diagram
+        # Example starting_diagram: ["circle_main", "point_P", "point_Q", "point_R", "point_S", "point_T", ...]
+        elements["circle"].set_opacity(0.2)  # Shape/region
+        elements["point_P"].set_opacity(1.0)  # Structural
+        elements["point_Q"].set_opacity(1.0)  # Structural
+        elements["point_R"].set_opacity(1.0)  # Structural
+        elements["point_S"].set_opacity(1.0)  # Structural
+        elements["point_T"].set_opacity(1.0)  # Structural
+        elements["label_P"].set_opacity(1.0)  # Structural
+        elements["label_Q"].set_opacity(1.0)  # Structural
+        elements["label_R"].set_opacity(1.0)  # Structural
+        elements["label_S"].set_opacity(1.0)  # Structural
+        elements["label_T"].set_opacity(1.0)  # Structural
+        elements["diameter_PR"].set_opacity(1.0)  # Structural
+        elements["line_QS"].set_opacity(1.0)  # Structural
+        # ... continue for all starting_diagram elements
+        
+        # STEP 5: SENTENCE-BY-SENTENCE ANIMATION (hardcoded from JSON)
+        
+        # Sentence 1: "Let's begin by identifying the information given in the problem."
+        # Duration: 6.09 seconds
+        # Khan Academy Text: "$\\text{Given:}$"
+        add_explanation_text(self, MathTex(r"\text{Given:}"))  # 0.5s
+        
+        # Geometric elements for sentence 1: [no new elements - all already visible]
+        # Calculate timing:
+        # total_animation_time = 0.5s (explanation text)
+        # num_indicates = int(6.09 / 2.5) = 2
+        # total_indicate_time = 2 * 0.5 = 1.0s
+        # remaining_wait_time = 6.09 - 0.5 - 1.0 = 4.59s
+        
+        # No Indicate needed since no geometric_elements in this sentence
+        self.wait(max(0.1, 5.09))  # Total wait = remaining_wait_time + total_animation_time - explanation_text_time
+        
+        # Sentence 2: "We are told that PR is the diameter of the circle, angle PSQ is 41 degrees, and angle PTQ is 68 degrees."
+        # Duration: 7.76 seconds
+        # Khan Academy Text: Multiple lines
+        add_explanation_text(self, MathTex(r"PR \text{ is a diameter}"))      # 0.5s
+        add_explanation_text(self, MathTex(r"\angle PSQ = 41^\circ"))         # 0.5s  
+        add_explanation_text(self, MathTex(r"\angle PTQ = 68^\circ"))         # 0.5s
+        
+        # Geometric elements for sentence 2:
+        # {"element_type": "line", "element_id": "diameter_PR", "animation_type": "highlight"}
+        # diameter_PR already visible from starting_diagram - skip visibility setting
+        
+        # {"element_type": "angle", "element_id": "angle_PSQ", "animation_type": "highlight_and_label"}
+        angle_PSQ = elements["angle_PSQ"]
+        angle_PSQ_label = elements["angle_PSQ_label"]
+        angle_PSQ.set_opacity(1.0)      # Angle arc
+        angle_PSQ_label.set_opacity(1.0) # Label
+        
+        # {"element_type": "angle", "element_id": "angle_PTQ", "animation_type": "highlight_and_label"}
+        angle_PTQ = elements["angle_PTQ"]
+        angle_PTQ_label = elements["angle_PTQ_label"]
+        angle_PTQ.set_opacity(1.0)      # Angle arc
+        angle_PTQ_label.set_opacity(1.0) # Label
+        
+        self.play(Create(angle_PSQ), Create(angle_PSQ_label), Create(angle_PTQ), Create(angle_PTQ_label))  # 1.0s
+        
+        # Calculate timing:
+        # total_animation_time = 1.5s (explanation texts) + 1.0s (create animations) = 2.5s
+        # num_indicates = int(7.76 / 2.5) = 3
+        # indicate_times = [0.5s, 3.0s, 5.5s] (relative to sentence start)
+        # total_indicate_time = 3 * 0.5 = 1.5s
+        # remaining_wait_time = 7.76 - 2.5 - 1.5 = 3.76s
+        
+        # Hardcoded Indicate() calls for geometric_elements in this sentence
+        self.play(Indicate(elements["diameter_PR"], color=YELLOW), 
+                 Indicate(angle_PSQ, color=YELLOW), 
+                 Indicate(angle_PTQ, color=YELLOW))  # 0.5s (at 0.5s)
+        
+        self.wait(max(0.1, 2.0))  # Wait until 3.0s mark
+        self.play(Indicate(elements["diameter_PR"], color=YELLOW), 
+                 Indicate(angle_PSQ, color=YELLOW), 
+                 Indicate(angle_PTQ, color=YELLOW))  # 0.5s (at 3.0s)
+        
+        self.wait(max(0.1, 2.0))  # Wait until 5.5s mark  
+        self.play(Indicate(elements["diameter_PR"], color=YELLOW), 
+                 Indicate(angle_PSQ, color=YELLOW), 
+                 Indicate(angle_PTQ, color=YELLOW))  # 0.5s (at 5.5s)
+        
+        self.wait(max(0.1, -0.24))  # remaining_wait_time - indicate waits = 3.76 - 2.0 - 2.0 = -0.24, use minimum 0.1s
+        
+        # Sentence 3: "Our goal is to find the measures of angle RQS and angle PQS."
+        # Duration: 4.83 seconds
+        # Khan Academy Text: "$\\text{Find: } \\angle RQS \\text{ and } \\angle PQS$"
+        add_explanation_text(self, MathTex(r"\text{Find: } \angle RQS \text{ and } \angle PQS"))  # 0.5s
+        
+        # Geometric elements for sentence 3:
+        # {"element_type": "angle", "element_id": "angle_RQS", "animation_type": "highlight"}
+        angle_RQS = elements["angle_RQS"]
+        angle_RQS.set_opacity(1.0)  # New element - make visible
+        
+        # {"element_type": "angle", "element_id": "angle_PQS", "animation_type": "highlight"}  
+        angle_PQS = elements["angle_PQS"]
+        angle_PQS.set_opacity(1.0)  # New element - make visible
+        
+        self.play(Create(angle_RQS), Create(angle_PQS))  # 1.0s
+        
+        # Calculate timing:
+        # total_animation_time = 0.5s (explanation) + 1.0s (creates) = 1.5s
+        # num_indicates = int(4.83 / 2.5) = 1
+        # indicate_times = [0.5s]
+        # total_indicate_time = 1 * 0.5 = 0.5s
+        # remaining_wait_time = 4.83 - 1.5 - 0.5 = 2.83s
+        
+        # Hardcoded Indicate() call
+        self.play(Indicate(angle_RQS, color=YELLOW), Indicate(angle_PQS, color=YELLOW))  # 0.5s (at 0.5s)
+        self.wait(max(0.1, 2.83))
+        
+        # End scene
+        self.play(FadeOut(complete_figure), run_time=2.0)
+
+class FindAngleRQSScene(Scene):  # Class name from step_id: "find_angle_RQS"
+    def construct(self):
+        self.camera.background_color = "#0C0C0C"
+        
+        # Create complete diagram (same diagram as previous scene to maintain continuity)
+        complete_diagram = create_complete_diagram_main()
+        complete_figure = complete_diagram["complete_figure"]
+        elements = complete_diagram["elements"]
+        
+        # Apply auto-scaling
+        auto_scale_to_left_screen(complete_figure, is_3d=False)
+        self.add(complete_figure)
+        
+        # Add hardcoded audio file
+        try:
+            self.add_sound("/path/to/find_angle_RQS_scene.mp3")
+        except Exception as e:
+            print(f"Warning: Could not add audio file: {e}")
+        
+        # STARTING DIAGRAM - Make visible elements from JSON starting_diagram for this scene
+        # Example starting_diagram: ["circle_main", "point_P", ..., "angle_PSQ_measurement_label", "angle_PTQ_measurement_label"]
+        elements["circle"].set_opacity(0.2)  # Shape/region
+        elements["point_P"].set_opacity(1.0)  # Structural
+        elements["point_Q"].set_opacity(1.0)  # Structural
+        # ... continue for all starting_diagram elements in this scene's JSON
+        elements["angle_PSQ"].set_opacity(1.0)  # From previous scene
+        elements["angle_PSQ_label"].set_opacity(1.0)  # From previous scene
+        elements["angle_PTQ"].set_opacity(1.0)  # From previous scene
+        elements["angle_PTQ_label"].set_opacity(1.0)  # From previous scene
+        
+        # SENTENCE-BY-SENTENCE ANIMATION (continue pattern for all sentences)
+        
+        # Sentence 1: "First, let's find angle RQS. We can start by looking at the angles on the straight line QS."
+        # Duration: 5.62 seconds
+        add_explanation_text(self, MathTex(r"\text{Step 1: Find } \angle RQS"))  # 0.5s
+        
+        # {"element_type": "angle", "element_id": "angle_RQS", "animation_type": "highlight"}
+        angle_RQS = elements["angle_RQS"] 
+        angle_RQS.set_opacity(1.0)  # New element - make visible
+        self.play(Create(angle_RQS))  # 1.0s
+        
+        # Calculate timing and add Indicate() loops...
+        # num_indicates = int(5.62 / 2.5) = 2
+        # indicate_times = [0.5s, 3.0s]
+        self.play(Indicate(angle_RQS, color=YELLOW))  # 0.5s (at 0.5s)
+        self.wait(max(0.1, 2.0))  # Wait until 3.0s
+        self.play(Indicate(angle_RQS, color=YELLOW))  # 0.5s (at 3.0s)
+        self.wait(max(0.1, 1.62))  # remaining wait time
+        
+        # Continue for all remaining sentences with their geometric elements...
+        # Follow the same pattern: starting_diagram + add_explanation_text + handle geometric_elements + timing + indicates
+        
+        # End scene
+        self.play(FadeOut(complete_figure), run_time=2.0)
+
+# FOR 3D SCENES: Follow same pattern but use ThreeDScene and is_3d=True
+class PartBScene1(ThreeDScene):  # For 3D subpart problems
+    def construct(self):
+        self.camera.background_color = "#0C0C0C"
+        
+        # Use appropriate 3D diagram function
+        complete_diagram = create_complete_diagram_b()  # 3D diagram function
+        complete_figure = complete_diagram["complete_figure"]
+        elements = complete_diagram["elements"]
+        
+        auto_scale_to_left_screen(complete_figure, is_3d=True)
+        self.add(complete_figure)
+        
+        # STARTING DIAGRAM for 3D scene
+        # ... set opacity for starting_diagram elements ...
+        
+        # 3D Initial Rotation - Give viewers better 3D perspective of starting diagram
+        self.play(Rotate(complete_figure, angle=2*PI, axis=UP), run_time=3)
+        
+        # Follow same sentence-by-sentence animation pattern with timing calculations...
+        
+        # MANDATORY: After last sentence but before fadeout
+        # 1. Clear all explanation text
+        clear_explanation_text(self)
+        
+        # 2. Rotate the complete diagram
+        self.play(Rotate(complete_figure, angle=2*PI, axis=UP), run_time=3)
+        
+        # 3. End scene
+        self.play(FadeOut(complete_figure), run_time=2.0)
+```
+
+# ANIMATION TYPE HANDLING
+
+## Animation Type Mappings:
+
+1. **`"draw"`**: 
+   ```python
+   element.set_opacity(1.0 or 0.2)  # Based on element type
+   self.play(Create(element))  # 1.0s
+   ```
+
+2. **`"highlight"`**: 
+   ```python
+   # Element should already be visible from starting_diagram or previous sentence
+   # Only add to Indicate() loops for this sentence
+   ```
+
+3. **`"highlight_and_label"`**: 
+   ```python
+   element.set_opacity(1.0 or 0.2)  # Based on element type
+   label.set_opacity(1.0)           # Labels always use opacity=1.0
+   self.play(Create(element), Create(label))  # 1.0s simultaneous
+   ```
+
+4. **`"measurement_label"`**: 
+   ```python
+   label.set_opacity(1.0)  # Labels always use opacity=1.0
+   self.play(Create(label))  # 1.0s
+   ```
+
+## Element Type Handling:
+
+**Angle Elements (`"element_type": "angle"`):**
+- Use helper functions (`create_2d_angle_arc_geometric`, `create_3d_angle_arc_with_connections`)
+- Always use `opacity=1.0` for angle arc visibility
+- For `"highlight_and_label"`: Make both arc and label visible, then include in Indicate() loops
+
+**Already Visible Elements:**
+- Add explanatory comments: `# diameter_PR already visible from starting_diagram - skip visibility setting`
+- Include in Indicate() loops for current sentence only
+
+# KEY PRINCIPLES FOR AI IMPLEMENTATION
+
+1. **ANALYZE JSON FIRST**: Process all timing and content data during code generation, not runtime
+
+2. **HARDCODE EVERYTHING**: No JSON parsing, no external file dependencies - pure Manim code
+
+3. **STARTING DIAGRAM SETUP**: Always begin each scene by making starting_diagram elements visible using appropriate opacity
+
+4. **PRECISE TIMING CALCULATIONS**: Use the timing formulas to calculate exact wait times and Indicate() schedules. **CRITICAL**: Always use `self.wait(max(0.1, calculated_wait_time))` format for ALL wait calls to ensure minimum 0.1 second wait times
+
+5. **HARDCODED INDICATE LOOPS**: Calculate `num_indicates = int(sentence_duration / 2.5)` and hardcode each Indicate() call with proper wait times
+
+6. **SELF-CONTAINED DIAGRAMS**: Create complete diagram functions with hardcoded coordinates extracted from any existing figure.py analysis
+
+7. **EXACT ELEMENT MAPPING**: JSON element_id values must map exactly to variable names in diagram functions
+
+8. **INTELLIGENT OPACITY**: Use opacity=1.0 for structural elements (points, lines, labels, angles), opacity=0.2 for shapes/regions (circles, polygons)
+
+9. **ANGLE PARAMETERS**: Always set `use_smaller_angle=True` for both 2D and 3D angle creation functions
+
+10. **3D SCENE REQUIREMENTS**: 
+    - **Initial rotation**: Immediately after setting starting_diagram element opacities, add rotation: `self.play(Rotate(complete_figure, angle=2*PI, axis=UP), run_time=3)`
+    - **End rotation**: Mandatory rotation after last sentence: `self.play(Rotate(complete_figure, angle=2*PI, axis=UP), run_time=3)`
+    - Clear explanation text before end rotation: `clear_explanation_text(self)`
+    - Then fadeout: `self.play(FadeOut(complete_figure), run_time=2.0)`
+
+11. **SENTENCE STRUCTURE**: Organize code with sentence-based comments from JSON for clarity
+
+12. **STEP ID PARSING**: Parse step_id to determine which diagram function to use (_a_, _b_, or main)
+
+13. **KHAN ACADEMY TEXT**: Use `add_explanation_text()` function for all explanatory text from JSON
+
+14. **ONE CLASS PER STEP**: Each scene class handles exactly one `step_id` from JSON
+
+15. **SKIP ALREADY VISIBLE**: Don't set opacity for elements already visible from starting_diagram, just include in Indicate() loops
+
+This approach produces completely self-contained Manim animations with precise timing, intelligent element visibility management, and pedagogically effective Indicate() feedback loops while maintaining the exact structure and timing from the JSON data.
+
+"""

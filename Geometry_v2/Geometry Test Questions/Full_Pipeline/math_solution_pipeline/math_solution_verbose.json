@@ -1,0 +1,89 @@
+{
+  "solution_steps": [
+    {
+      "step_id": "find_length_QS_using_cosine_rule",
+      "sentences": [
+        {
+          "text": "Let's start with part (a). We need to find the length of the diagonal Q S. We can focus on the triangle P Q S."
+        },
+        {
+          "text": "We are given two sides, P Q and P S, and the angle between them, angle Q P S. This is a perfect setup to use the Cosine Rule."
+        },
+        {
+          "text": "The Cosine Rule states that Q S squared equals P Q squared plus P S squared minus 2 times P Q times P S times the cosine of angle Q P S."
+        },
+        {
+          "text": "Plugging in the values, we get Q S squared is approximately 210 point 6. Taking the square root, we find that Q S is about 14 point 5 1 centimeters."
+        }
+      ]
+    },
+    {
+      "step_id": "find_angle_RQS_using_sine_rule",
+      "sentences": [
+        {
+          "text": "Now for part (a)(ii), finding angle R Q S. We'll look at triangle Q R S. We know sides Q R, Q S, and angle Q R S."
+        },
+        {
+          "text": "We can use the Sine Rule. To find angle R Q S, it's easiest to first find angle R S Q using the known side-angle pair."
+        },
+        {
+          "text": "Solving for angle R S Q, we find it's the inverse sine of 13 times sine of 65 degrees divided by 14 point 5 1, which is about 54 point 3 degrees."
+        },
+        {
+          "text": "Since the angles in a triangle sum to 180 degrees, we can find angle R Q S by subtraction. It's approximately 60 point 7 degrees."
+        }
+      ]
+    },
+    {
+      "step_id": "find_shortest_distance_from_R_to_plane_PQS",
+      "sentences": [
+        {
+          "text": "For part (b), the sheet is folded. The shortest distance from point R to the plane P Q S is the perpendicular height."
+        },
+        {
+          "text": "We can find this height by considering a right-angled triangle formed by the fold. The angle of the fold is 80 degrees."
+        },
+        {
+          "text": "First, we need the altitude from R to the fold line Q S in triangle Q R S. Using the area formula, this altitude is about 11 point 4 centimeters."
+        },
+        {
+          "text": "The shortest distance is the side opposite the 80-degree angle in our cross-sectional triangle. It's 11 point 3 5 times sine of 80 degrees, which is about 11 point 2 centimeters."
+        }
+      ]
+    },
+    {
+      "step_id": "evaluate_claim_about_distance_PX",
+      "sentences": [
+        {
+          "text": "Finally, let's check the claim that the distance from P to any point X on plane Q R S is greater than 8 cm. We must find the minimum possible distance."
+        },
+        {
+          "text": "This minimum distance is the perpendicular height from P to the plane Q R S. The method is the same as the previous step."
+        },
+        {
+          "text": "First, we find the altitude from P to the line Q S in triangle P Q S. Using the area formula, this altitude is about 8 point 1 9 centimeters."
+        },
+        {
+          "text": "The shortest distance from P to the plane is 8 point 1 9 times sine of 80 degrees, which is approximately 8 point 0 6 centimeters."
+        },
+        {
+          "text": "Since the minimum distance is 8 point 0 6 cm, which is greater than 8 cm, the distance from P to any point X on the plane will always exceed 8 cm. The claim is correct."
+        }
+      ]
+    },
+    {
+      "step_id": "key_takeaways",
+      "sentences": [
+        {
+          "text": "To recap, we used the Cosine Rule to find a side in a triangle when we knew two sides and the included angle."
+        },
+        {
+          "text": "We used the Sine Rule to find an unknown angle when we had a known side-angle pair."
+        },
+        {
+          "text": "And for the 3D part, we found the shortest distance to a plane by creating a 2D right-angled triangle using the altitude to the fold line and the dihedral angle."
+        }
+      ]
+    }
+  ]
+}
