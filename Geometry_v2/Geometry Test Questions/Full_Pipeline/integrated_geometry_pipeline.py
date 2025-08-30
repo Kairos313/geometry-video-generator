@@ -320,15 +320,14 @@ def main():
             print("❌ No question image path provided. Exiting.")
             sys.exit(1)
     
-    # Load environment variables from .env file
-    env_path = "/Users/kairos/Desktop/Prompt Generation/.env"
-    load_dotenv(env_path)
+    # Load environment variables from .env file in current directory
+    load_dotenv('.env')
     
     # Configuration
     OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
     if not OPENROUTER_API_KEY:
         print("Error: OPENROUTER_API_KEY environment variable not set")
-        print(f"Checked .env file at: {env_path}")
+        print("Checked .env file in current directory")
         sys.exit(1)
     
     # Output directory

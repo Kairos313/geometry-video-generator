@@ -15,10 +15,10 @@ from typing import List, Tuple, Optional, Dict, Any
 # If this script is in 'Geometry_v2/', and .env is also in 'Geometry_v2/', use Path(__file__).resolve().parent
 # If .env is one level up from 'Geometry_v2/', use Path(__file__).resolve().parent.parent
 try:
-    dotenv_path = Path("/Users/kairos/Desktop/Prompt Generation/.env") # Load .env from the project root
+    dotenv_path = Path(".env") # Load .env from current directory
 except NameError:
     # Fallback if __file__ is not available
-    dotenv_path = Path("/Users/kairos/Desktop/Prompt Generation/.env")
+    dotenv_path = Path(".env")
 
 print(f"Loading .env from: {dotenv_path}")
 print(f"File exists: {dotenv_path.exists()}")

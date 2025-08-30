@@ -24,8 +24,8 @@ import sys
 sys.path.append('/Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline')
 from pipeline_prompts import Solution_Steps_v3
 
-# Load environment variables
-load_dotenv()
+# Load environment variables from current directory
+load_dotenv('.env')
 
 # Configure logging
 logging.basicConfig(

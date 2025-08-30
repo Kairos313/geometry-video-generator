@@ -1058,3 +1058,234 @@ KeyboardInterrupt
 2025-08-29 12:16:25,801 - INFO - 📁 Log File: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline/pipeline.log
 2025-08-29 12:16:25,801 - INFO - ================================================================================
 2025-08-29 12:16:25,802 - INFO - 📊 Token usage report saved to: pipeline_token_usage_report.json
+2025-08-30 15:22:05,933 - INFO - Pipeline initialized in directory: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline
+2025-08-30 15:22:05,934 - INFO - Question image: Math Questions/question_7.png
+2025-08-30 15:22:05,934 - INFO - 🎬 STARTING COMPLETE GEOMETRY VIDEO GENERATION PIPELINE
+2025-08-30 15:22:05,934 - INFO - 📁 Question Image: Math Questions/question_7.png
+2025-08-30 15:22:05,934 - INFO - 📁 Working Directory: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline
+2025-08-30 15:22:05,934 - INFO - ================================================================================
+2025-08-30 15:22:05,934 - INFO - ============================================================
+2025-08-30 15:22:05,934 - INFO - STEP 1: GENERATE SOLUTION STEPS
+2025-08-30 15:22:05,934 - INFO - ============================================================
+2025-08-30 15:22:05,934 - INFO - 🚀 Starting generate_solution_steps.py...
+2025-08-30 15:22:05,934 - INFO -    Command: python generate_solution_steps.py --question-image Math Questions/question_7.png
+2025-08-30 15:23:13,129 - ERROR - ❌ generate_solution_steps.py failed with return code 1
+2025-08-30 15:23:13,130 - ERROR -    Error output: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline/pipeline_prompts.py:90: SyntaxWarning: invalid escape sequence '\p'
+  - Greek letters using proper LaTeX commands (e.g., `\alpha`, `\beta`, `\theta`, `\pi`)
+/Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline/pipeline_prompts.py:3277: SyntaxWarning: invalid escape sequence '\s'
+  add_explanation_text(self, MathTex(r"\frac{a}{\sin A} = \frac{b}{\sin B}"))
+/Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline/pipeline_prompts.py:3749: SyntaxWarning: invalid escape sequence '\s'
+  add_explanation_text(self, MathTex(r"\frac{a}{\sin A} = \frac{b}{\sin B}"))
+/Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline/pipeline_prompts.py:4439: SyntaxWarning: invalid escape sequence '\s'
+  add_explanation_text(self, MathTex(r"\frac{a}{\sin A} = \frac{b}{\sin B}"))
+2025-08-30 15:22:06,242 - INFO - Initialized Solution Steps Generator with Gemini-2.5-pro
+2025-08-30 15:22:06,242 - INFO - ✅ Solution Steps Generator initialized successfully
+2025-08-30 15:22:06,242 - INFO - 🎬 Starting solution steps generation...
+2025-08-30 15:22:06,242 - INFO - 📁 PDF file: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Math_Solution/symbols.pdf
+2025-08-30 15:22:06,242 - INFO - 📁 Question image: Math Questions/question_7.png
+2025-08-30 15:22:06,242 - INFO - 🎯 Starting solution steps generation from PDF
+2025-08-30 15:22:06,242 - INFO - 📁 PDF file: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Math_Solution/symbols.pdf
+2025-08-30 15:22:06,242 - INFO - Converting PDF to images: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Math_Solution/symbols.pdf
+2025-08-30 15:22:06,620 - INFO - ✓ Converted 4 pages to images
+2025-08-30 15:22:06,872 - INFO - ✓ Saved page 0 to temporary file: /var/folders/gr/bjlx70614nb1yx7mx59v0p5w0000gn/T/tmpgerwxmte_page_0.png
+2025-08-30 15:22:07,141 - INFO - ✓ Saved page 1 to temporary file: /var/folders/gr/bjlx70614nb1yx7mx59v0p5w0000gn/T/tmpydy_o225_page_1.png
+2025-08-30 15:22:07,391 - INFO - ✓ Saved page 2 to temporary file: /var/folders/gr/bjlx70614nb1yx7mx59v0p5w0000gn/T/tmp9th9_5g2_page_2.png
+2025-08-30 15:22:07,635 - INFO - ✓ Saved page 3 to temporary file: /var/folders/gr/bjlx70614nb1yx7mx59v0p5w0000gn/T/tmptswe2jlv_page_3.png
+2025-08-30 15:22:07,635 - INFO - 📁 Adding question image: Math Questions/question_7.png
+2025-08-30 15:22:07,636 - INFO - ✓ Encoded image 1/5
+2025-08-30 15:22:07,638 - INFO - ✓ Encoded image 2/5
+2025-08-30 15:22:07,639 - INFO - ✓ Encoded image 3/5
+2025-08-30 15:22:07,640 - INFO - ✓ Encoded image 4/5
+2025-08-30 15:22:07,640 - INFO - ✓ Encoded image 5/5
+2025-08-30 15:22:07,640 - INFO - Making Gemini API call with 5 images...
+2025-08-30 15:23:13,072 - ERROR - Error: Gemini API request failed: Expecting value: line 215 column 1 (char 1177)
+2025-08-30 15:23:13,076 - ERROR - ❌ API call failed: Gemini API request failed: Expecting value: line 215 column 1 (char 1177)
+2025-08-30 15:23:13,081 - INFO - ✓ Cleaned up temporary file: /var/folders/gr/bjlx70614nb1yx7mx59v0p5w0000gn/T/tmpgerwxmte_page_0.png
+2025-08-30 15:23:13,082 - INFO - ✓ Cleaned up temporary file: /var/folders/gr/bjlx70614nb1yx7mx59v0p5w0000gn/T/tmpydy_o225_page_1.png
+2025-08-30 15:23:13,083 - INFO - ✓ Cleaned up temporary file: /var/folders/gr/bjlx70614nb1yx7mx59v0p5w0000gn/T/tmp9th9_5g2_page_2.png
+2025-08-30 15:23:13,083 - INFO - ✓ Cleaned up temporary file: /var/folders/gr/bjlx70614nb1yx7mx59v0p5w0000gn/T/tmptswe2jlv_page_3.png
+2025-08-30 15:23:13,089 - ERROR - ❌ Solution steps generation failed!
+
+2025-08-30 15:23:13,130 - ERROR - ❌ Pipeline failed at Step 1
+2025-08-30 15:25:19,791 - INFO - Pipeline initialized in directory: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline
+2025-08-30 15:25:19,792 - INFO - Question image: Math Questions/question_7.png
+2025-08-30 15:25:19,792 - INFO - 🎬 STARTING COMPLETE GEOMETRY VIDEO GENERATION PIPELINE
+2025-08-30 15:25:19,792 - INFO - 📁 Question Image: Math Questions/question_7.png
+2025-08-30 15:25:19,792 - INFO - 📁 Working Directory: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline
+2025-08-30 15:25:19,792 - INFO - ================================================================================
+2025-08-30 15:25:19,792 - INFO - ============================================================
+2025-08-30 15:25:19,792 - INFO - STEP 1: GENERATE SOLUTION STEPS
+2025-08-30 15:25:19,792 - INFO - ============================================================
+2025-08-30 15:25:19,792 - INFO - 🚀 Starting generate_solution_steps.py...
+2025-08-30 15:25:19,792 - INFO -    Command: python generate_solution_steps.py --question-image Math Questions/question_7.png
+2025-08-30 15:27:16,759 - INFO - ✅ generate_solution_steps.py completed successfully in 116.97 seconds
+2025-08-30 15:27:16,760 - INFO - 📊 Token usage for generate_solution_steps.py: {'prompt_tokens': 4880, 'completion_tokens': 8294, 'total_tokens': 13174}
+2025-08-30 15:27:16,760 - INFO - 🔍 Validating Step 1 outputs...
+2025-08-30 15:27:16,761 - INFO - ✅ Step 1: math_solution_pipeline/math_solution_standard.json exists (10150 bytes)
+2025-08-30 15:27:16,761 - INFO - ✅ Step 1: math_solution_pipeline/math_solution_verbose.json exists (2304 bytes)
+2025-08-30 15:27:16,761 - INFO - ✅ Step 1 completed and validated successfully
+2025-08-30 15:27:16,761 - INFO - ============================================================
+2025-08-30 15:27:16,761 - INFO - STEP 2: GENERATE AUDIO FILES
+2025-08-30 15:27:16,761 - INFO - ============================================================
+2025-08-30 15:27:16,761 - INFO - 🚀 Starting geo_scriptwriter_parallel.py...
+2025-08-30 15:27:16,761 - INFO -    Command: python geo_scriptwriter_parallel.py
+2025-08-30 15:27:29,547 - INFO - ✅ geo_scriptwriter_parallel.py completed successfully in 12.79 seconds
+2025-08-30 15:27:29,548 - INFO - 🔍 Validating Step 2 outputs...
+2025-08-30 15:27:29,548 - INFO - ✅ Step 2: geometric_elements_with_timing.json exists (14250 bytes)
+2025-08-30 15:27:29,549 - INFO - ✅ Step 2: Audio directory exists with 271 audio files
+2025-08-30 15:27:29,549 - INFO - ✅ Step 2: Scene directory exists with 58 audio files
+2025-08-30 15:27:29,549 - INFO - ✅ Step 2 completed and validated successfully
+2025-08-30 15:27:29,549 - INFO - ============================================================
+2025-08-30 15:27:29,549 - INFO - STEP 3: GENERATE GEOMETRIC PIPELINE
+2025-08-30 15:27:29,549 - INFO - ============================================================
+2025-08-30 15:27:29,550 - INFO - 🚀 Starting integrated_geometry_pipeline.py...
+2025-08-30 15:27:29,550 - INFO -    Command: python integrated_geometry_pipeline.py --question-image Math Questions/question_7.png
+2025-08-30 15:29:39,612 - INFO - ✅ integrated_geometry_pipeline.py completed successfully in 130.06 seconds
+2025-08-30 15:29:39,613 - INFO - 📊 Token usage for integrated_geometry_pipeline.py: {'prompt_tokens': 7273, 'completion_tokens': 8045, 'total_tokens': 15318}
+2025-08-30 15:29:39,613 - INFO - 🔍 Validating Step 3 outputs...
+2025-08-30 15:29:39,613 - INFO - ✅ Step 3: coordinates.txt exists (8258 bytes)
+2025-08-30 15:29:39,613 - INFO - ✅ Step 3: figure.py exists (14524 bytes)
+2025-08-30 15:29:39,613 - INFO - ✅ Step 3 completed and validated successfully
+2025-08-30 15:29:39,613 - INFO - ============================================================
+2025-08-30 15:29:39,613 - INFO - STEP 4: GENERATE VIDEO CODE
+2025-08-30 15:29:39,613 - INFO - ============================================================
+2025-08-30 15:29:39,613 - INFO - 🚀 Starting video_claude.py...
+2025-08-30 15:29:39,613 - INFO -    Command: python video_claude.py --question-image Math Questions/question_7.png
+2025-08-30 15:31:17,482 - INFO - ✅ video_claude.py completed successfully in 97.87 seconds
+2025-08-30 15:31:17,485 - INFO - 📊 Token usage for video_claude.py: {'prompt_tokens': 0, 'completion_tokens': 0, 'total_tokens': 35798}
+2025-08-30 15:31:17,485 - INFO - 🔍 Validating Step 4 outputs...
+2025-08-30 15:31:17,485 - INFO - ✅ Step 4: all_scenes.py exists (27935 bytes)
+2025-08-30 15:31:17,486 - INFO - ✅ Step 4: all_scenes_metadata.json exists (273 bytes)
+2025-08-30 15:31:17,486 - INFO - ✅ Step 4 completed and validated successfully
+2025-08-30 15:31:17,486 - INFO - ============================================================
+2025-08-30 15:31:17,486 - INFO - STEP 5: RENDER FINAL VIDEO
+2025-08-30 15:31:17,486 - INFO - ============================================================
+2025-08-30 15:31:17,486 - INFO - 🚀 Starting render_and_concatenate_scenes.py...
+2025-08-30 15:31:17,486 - INFO -    Command: python render_and_concatenate_scenes.py
+2025-08-30 15:32:08,740 - INFO - ✅ render_and_concatenate_scenes.py completed successfully in 51.25 seconds
+2025-08-30 15:32:08,743 - INFO - 🔍 Validating Step 5 outputs...
+2025-08-30 15:32:08,743 - INFO - ✅ Step 5: final_geometry_video.mp4 exists (3038600 bytes)
+2025-08-30 15:32:08,743 - INFO - ✅ Step 5 completed and validated successfully
+2025-08-30 15:32:08,756 - INFO - 📊 Token usage from all_scenes_metadata.json: {'prompt_tokens': 26133, 'completion_tokens': 9665, 'total_tokens': 35798}
+2025-08-30 15:32:08,756 - INFO - ================================================================================
+2025-08-30 15:32:08,756 - INFO - 🎉 PIPELINE COMPLETED SUCCESSFULLY!
+2025-08-30 15:32:08,756 - INFO - ================================================================================
+2025-08-30 15:32:08,756 - INFO - 📊 Total Pipeline Duration: 408.96 seconds (6.82 minutes)
+2025-08-30 15:32:08,756 - INFO - 📊 COMPREHENSIVE TOKEN USAGE SUMMARY:
+2025-08-30 15:32:08,757 - INFO - --------------------------------------------------
+2025-08-30 15:32:08,757 - INFO - 🔢 TOTAL TOKENS ACROSS ALL STEPS:
+2025-08-30 15:32:08,757 - INFO -    • Prompt Tokens: 38,286
+2025-08-30 15:32:08,757 - INFO -    • Completion Tokens: 26,004
+2025-08-30 15:32:08,757 - INFO -    • Total Tokens: 100,088
+2025-08-30 15:32:08,757 - INFO - 
+2025-08-30 15:32:08,757 - INFO - 🤖 TOKENS BY AI MODEL:
+2025-08-30 15:32:08,757 - INFO -    • GEMINI: 13,174 tokens
+2025-08-30 15:32:08,757 - INFO -      - Input: 4,880, Output: 8,294
+2025-08-30 15:32:08,757 - INFO -    • CLAUDE: 86,914 tokens
+2025-08-30 15:32:08,757 - INFO -      - Input: 33,406, Output: 17,710
+2025-08-30 15:32:08,757 - INFO - 
+2025-08-30 15:32:08,757 - INFO - 📋 TOKENS BY STEP:
+2025-08-30 15:32:08,757 - INFO -    • generate_solution_steps.py: 13,174 tokens
+2025-08-30 15:32:08,757 - INFO -      - Input: 4,880, Output: 8,294
+2025-08-30 15:32:08,757 - INFO -    • integrated_geometry_pipeline.py: 15,318 tokens
+2025-08-30 15:32:08,757 - INFO -      - Input: 7,273, Output: 8,045
+2025-08-30 15:32:08,757 - INFO -    • video_claude.py: 35,798 tokens
+2025-08-30 15:32:08,757 - INFO -      - Input: 0, Output: 0
+2025-08-30 15:32:08,757 - INFO -    • all_scenes: 35,798 tokens
+2025-08-30 15:32:08,758 - INFO -      - Input: 26,133, Output: 9,665
+2025-08-30 15:32:08,758 - INFO - 
+2025-08-30 15:32:08,758 - INFO - 📁 Final Video: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline/final_geometry_video.mp4
+2025-08-30 15:32:08,758 - INFO - 📁 Log File: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline/pipeline.log
+2025-08-30 15:32:08,758 - INFO - ================================================================================
+2025-08-30 15:32:08,759 - INFO - 📊 Token usage report saved to: pipeline_token_usage_report.json
+2025-08-30 15:35:10,206 - INFO - Pipeline initialized in directory: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline
+2025-08-30 15:35:10,206 - INFO - Question image: Math Questions/question_7.png
+2025-08-30 15:35:10,206 - INFO - 🎬 STARTING COMPLETE GEOMETRY VIDEO GENERATION PIPELINE
+2025-08-30 15:35:10,206 - INFO - 📁 Question Image: Math Questions/question_7.png
+2025-08-30 15:35:10,206 - INFO - 📁 Working Directory: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline
+2025-08-30 15:35:10,206 - INFO - ================================================================================
+2025-08-30 15:35:10,206 - INFO - ============================================================
+2025-08-30 15:35:10,206 - INFO - STEP 1: GENERATE SOLUTION STEPS
+2025-08-30 15:35:10,206 - INFO - ============================================================
+2025-08-30 15:35:10,206 - INFO - 🚀 Starting generate_solution_steps.py...
+2025-08-30 15:35:10,206 - INFO -    Command: python generate_solution_steps.py --question-image Math Questions/question_7.png
+2025-08-30 15:36:36,389 - INFO - ✅ generate_solution_steps.py completed successfully in 86.18 seconds
+2025-08-30 15:36:36,390 - INFO - 📊 Token usage for generate_solution_steps.py: {'prompt_tokens': 4880, 'completion_tokens': 8658, 'total_tokens': 13538}
+2025-08-30 15:36:36,390 - INFO - 🔍 Validating Step 1 outputs...
+2025-08-30 15:36:36,390 - INFO - ✅ Step 1: math_solution_pipeline/math_solution_standard.json exists (9804 bytes)
+2025-08-30 15:36:36,390 - INFO - ✅ Step 1: math_solution_pipeline/math_solution_verbose.json exists (2683 bytes)
+2025-08-30 15:36:36,390 - INFO - ✅ Step 1 completed and validated successfully
+2025-08-30 15:36:36,391 - INFO - ============================================================
+2025-08-30 15:36:36,391 - INFO - STEP 2: GENERATE AUDIO FILES
+2025-08-30 15:36:36,391 - INFO - ============================================================
+2025-08-30 15:36:36,391 - INFO - 🚀 Starting geo_scriptwriter_parallel.py...
+2025-08-30 15:36:36,391 - INFO -    Command: python geo_scriptwriter_parallel.py
+2025-08-30 15:36:47,621 - INFO - ✅ geo_scriptwriter_parallel.py completed successfully in 11.23 seconds
+2025-08-30 15:36:47,621 - INFO - 🔍 Validating Step 2 outputs...
+2025-08-30 15:36:47,622 - INFO - ✅ Step 2: geometric_elements_with_timing.json exists (14693 bytes)
+2025-08-30 15:36:47,622 - INFO - ✅ Step 2: Audio directory exists with 281 audio files
+2025-08-30 15:36:47,623 - INFO - ✅ Step 2: Scene directory exists with 62 audio files
+2025-08-30 15:36:47,623 - INFO - ✅ Step 2 completed and validated successfully
+2025-08-30 15:36:47,623 - INFO - ============================================================
+2025-08-30 15:36:47,623 - INFO - STEP 3: GENERATE GEOMETRIC PIPELINE
+2025-08-30 15:36:47,623 - INFO - ============================================================
+2025-08-30 15:36:47,623 - INFO - 🚀 Starting integrated_geometry_pipeline.py...
+2025-08-30 15:36:47,623 - INFO -    Command: python integrated_geometry_pipeline.py --question-image Math Questions/question_7.png
+2025-08-30 15:38:52,716 - INFO - ✅ integrated_geometry_pipeline.py completed successfully in 125.09 seconds
+2025-08-30 15:38:52,717 - INFO - 📊 Token usage for integrated_geometry_pipeline.py: {'prompt_tokens': 6460, 'completion_tokens': 8322, 'total_tokens': 14782}
+2025-08-30 15:38:52,717 - INFO - 🔍 Validating Step 3 outputs...
+2025-08-30 15:38:52,717 - INFO - ✅ Step 3: coordinates.txt exists (8656 bytes)
+2025-08-30 15:38:52,717 - INFO - ✅ Step 3: figure.py exists (13103 bytes)
+2025-08-30 15:38:52,717 - INFO - ✅ Step 3 completed and validated successfully
+2025-08-30 15:38:52,717 - INFO - ============================================================
+2025-08-30 15:38:52,717 - INFO - STEP 4: GENERATE VIDEO CODE
+2025-08-30 15:38:52,717 - INFO - ============================================================
+2025-08-30 15:38:52,717 - INFO - 🚀 Starting video_claude.py...
+2025-08-30 15:38:52,717 - INFO -    Command: python video_claude.py --question-image Math Questions/question_7.png
+2025-08-30 15:40:11,461 - INFO - ✅ video_claude.py completed successfully in 78.74 seconds
+2025-08-30 15:40:11,463 - INFO - 📊 Token usage for video_claude.py: {'prompt_tokens': 0, 'completion_tokens': 0, 'total_tokens': 33642}
+2025-08-30 15:40:11,463 - INFO - 🔍 Validating Step 4 outputs...
+2025-08-30 15:40:11,463 - INFO - ✅ Step 4: all_scenes.py exists (22236 bytes)
+2025-08-30 15:40:11,463 - INFO - ✅ Step 4: all_scenes_metadata.json exists (272 bytes)
+2025-08-30 15:40:11,463 - INFO - ✅ Step 4 completed and validated successfully
+2025-08-30 15:40:11,463 - INFO - ============================================================
+2025-08-30 15:40:11,463 - INFO - STEP 5: RENDER FINAL VIDEO
+2025-08-30 15:40:11,463 - INFO - ============================================================
+2025-08-30 15:40:11,463 - INFO - 🚀 Starting render_and_concatenate_scenes.py...
+2025-08-30 15:40:11,463 - INFO -    Command: python render_and_concatenate_scenes.py
+2025-08-30 15:40:52,752 - INFO - ✅ render_and_concatenate_scenes.py completed successfully in 41.29 seconds
+2025-08-30 15:40:52,757 - INFO - 🔍 Validating Step 5 outputs...
+2025-08-30 15:40:52,757 - INFO - ✅ Step 5: final_geometry_video.mp4 exists (3001686 bytes)
+2025-08-30 15:40:52,757 - INFO - ✅ Step 5 completed and validated successfully
+2025-08-30 15:40:52,761 - INFO - 📊 Token usage from all_scenes_metadata.json: {'prompt_tokens': 25959, 'completion_tokens': 7683, 'total_tokens': 33642}
+2025-08-30 15:40:52,761 - INFO - ================================================================================
+2025-08-30 15:40:52,761 - INFO - 🎉 PIPELINE COMPLETED SUCCESSFULLY!
+2025-08-30 15:40:52,761 - INFO - ================================================================================
+2025-08-30 15:40:52,761 - INFO - 📊 Total Pipeline Duration: 342.56 seconds (5.71 minutes)
+2025-08-30 15:40:52,761 - INFO - 📊 COMPREHENSIVE TOKEN USAGE SUMMARY:
+2025-08-30 15:40:52,761 - INFO - --------------------------------------------------
+2025-08-30 15:40:52,761 - INFO - 🔢 TOTAL TOKENS ACROSS ALL STEPS:
+2025-08-30 15:40:52,761 - INFO -    • Prompt Tokens: 37,299
+2025-08-30 15:40:52,761 - INFO -    • Completion Tokens: 24,663
+2025-08-30 15:40:52,761 - INFO -    • Total Tokens: 95,604
+2025-08-30 15:40:52,762 - INFO - 
+2025-08-30 15:40:52,762 - INFO - 🤖 TOKENS BY AI MODEL:
+2025-08-30 15:40:52,762 - INFO -    • GEMINI: 13,538 tokens
+2025-08-30 15:40:52,762 - INFO -      - Input: 4,880, Output: 8,658
+2025-08-30 15:40:52,762 - INFO -    • CLAUDE: 82,066 tokens
+2025-08-30 15:40:52,762 - INFO -      - Input: 32,419, Output: 16,005
+2025-08-30 15:40:52,762 - INFO - 
+2025-08-30 15:40:52,762 - INFO - 📋 TOKENS BY STEP:
+2025-08-30 15:40:52,762 - INFO -    • generate_solution_steps.py: 13,538 tokens
+2025-08-30 15:40:52,762 - INFO -      - Input: 4,880, Output: 8,658
+2025-08-30 15:40:52,762 - INFO -    • integrated_geometry_pipeline.py: 14,782 tokens
+2025-08-30 15:40:52,762 - INFO -      - Input: 6,460, Output: 8,322
+2025-08-30 15:40:52,762 - INFO -    • video_claude.py: 33,642 tokens
+2025-08-30 15:40:52,762 - INFO -      - Input: 0, Output: 0
+2025-08-30 15:40:52,762 - INFO -    • all_scenes: 33,642 tokens
+2025-08-30 15:40:52,762 - INFO -      - Input: 25,959, Output: 7,683
+2025-08-30 15:40:52,762 - INFO - 
+2025-08-30 15:40:52,762 - INFO - 📁 Final Video: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline/final_geometry_video.mp4
+2025-08-30 15:40:52,762 - INFO - 📁 Log File: /Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline/pipeline.log
+2025-08-30 15:40:52,762 - INFO - ================================================================================
+2025-08-30 15:40:52,762 - INFO - 📊 Token usage report saved to: pipeline_token_usage_report.json

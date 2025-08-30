@@ -1,47 +1,47 @@
 {
   "pipeline_info": {
-    "question_image": "../Math Questions/question_4.png",
-    "total_duration_seconds": 501.78043484687805,
-    "timestamp": "2025-08-29 12:16:25"
+    "question_image": "Math Questions/question_7.png",
+    "total_duration_seconds": 342.55597376823425,
+    "timestamp": "2025-08-30 15:40:52"
   },
   "token_usage": {
     "total": {
-      "prompt_tokens": 44423,
-      "completion_tokens": 35934,
-      "total_tokens": 123211
+      "prompt_tokens": 37299,
+      "completion_tokens": 24663,
+      "total_tokens": 95604
     },
     "by_step": {
       "generate_solution_steps.py": {
         "prompt_tokens": 4880,
-        "completion_tokens": 9798,
-        "total_tokens": 14678
+        "completion_tokens": 8658,
+        "total_tokens": 13538
       },
       "integrated_geometry_pipeline.py": {
-        "prompt_tokens": 6832,
-        "completion_tokens": 15993,
-        "total_tokens": 22825
+        "prompt_tokens": 6460,
+        "completion_tokens": 8322,
+        "total_tokens": 14782
       },
       "video_claude.py": {
         "prompt_tokens": 0,
         "completion_tokens": 0,
-        "total_tokens": 42854
+        "total_tokens": 33642
       },
       "all_scenes": {
-        "prompt_tokens": 32711,
-        "completion_tokens": 10143,
-        "total_tokens": 42854
+        "prompt_tokens": 25959,
+        "completion_tokens": 7683,
+        "total_tokens": 33642
       }
     },
     "by_model": {
       "gemini": {
         "prompt_tokens": 4880,
-        "completion_tokens": 9798,
-        "total_tokens": 14678
+        "completion_tokens": 8658,
+        "total_tokens": 13538
       },
       "claude": {
-        "prompt_tokens": 39543,
-        "completion_tokens": 26136,
-        "total_tokens": 108533
+        "prompt_tokens": 32419,
+        "completion_tokens": 16005,
+        "total_tokens": 82066
       }
     }
   }

@@ -30,8 +30,9 @@ except ImportError as e:
     print(f"⚠️  MoviePy not found. Install with: pip install moviepy. Error: {e}")
 
 class SceneRenderer:
-    def __init__(self, scenes_file: str = "all_scenes.py"):
+    def __init__(self, scenes_file: str = "all_scenes.py", quality: str = "ql"):
         self.scenes_file = scenes_file
+        self.current_quality = quality
         self.script_dir = Path(__file__).parent
         self.media_dir = self.script_dir / "media"
         self.scene_dir = self.script_dir / "Scene"
@@ -69,17 +70,18 @@ class SceneRenderer:
         except Exception as e:
             raise Exception(f"Error reading scene file: {e}")
     
-    def render_scene(self, scene_name: str) -> Tuple[str, bool]:
+    def render_scene(self, scene_name: str, quality: str = "ql") -> Tuple[str, bool]:
         """
-        Render a single scene using Manim with -ql quality.
+        Render a single scene using Manim with specified quality.
+        Quality options: ql (480p15), qm (720p30), qh (1080p60)
         Returns (scene_name, success_status).
         """
-        print(f"🎬 Starting render for {scene_name}...")
+        print(f"🎬 Starting render for {scene_name} with quality: {quality}...")
         
         try:
-            # Run manim command with -ql quality and disable caching to prevent conflicts
+            # Run manim command with specified quality and disable caching to prevent conflicts
             cmd = [
-                'manim', '-ql', '--disable_caching', self.scenes_file, scene_name
+                'manim', f'-q{quality}', '--disable_caching', self.scenes_file, scene_name
             ]
             
             print(f"   Running: {' '.join(cmd)}")
@@ -106,13 +108,14 @@ class SceneRenderer:
             print(f"❌ Error rendering {scene_name}: {e}")
             return scene_name, False
     
-    def render_scenes_sequentially(self, scene_names: List[str]) -> List[Tuple[str, bool]]:
+    def render_scenes_sequentially(self, scene_names: List[str], quality: str = "ql") -> List[Tuple[str, bool]]:
         """
         Render multiple scenes sequentially (one after another).
+        Quality options: ql (480p15), qm (720p30), qh (1080p60)
         Returns list of (scene_name, success_status) tuples.
         Stops the entire process if any scene fails.
         """
-        print(f"\n🎬 Rendering {len(scene_names)} scenes sequentially...")
+        print(f"\n🎬 Rendering {len(scene_names)} scenes sequentially with quality: {quality}...")
         print("-" * 40)
         
         results = []
@@ -122,7 +125,7 @@ class SceneRenderer:
             print("-" * 30)
             
             try:
-                result = self.render_scene(scene_name)
+                result = self.render_scene(scene_name, quality)
                 results.append(result)
                 
                 # Check if this scene failed
@@ -145,8 +148,18 @@ class SceneRenderer:
         # Manim creates videos in media/videos/scenes_file_name/quality/
         # The filename is typically scene_name.mp4
         
-        # Look for the video file in the media directory (prioritize 480p15 for -ql)
+        # Look for the video file in the media directory with quality-specific patterns
+        quality_map = {
+            "ql": "480p15",
+            "qm": "720p30", 
+            "qh": "1080p60"
+        }
+        
+        # Get the quality directory name
+        quality_dir = quality_map.get(self.current_quality, "480p15")
+        
         video_patterns = [
+            self.media_dir / "videos" / self.scenes_file.replace('.py', '') / quality_dir / f"{scene_name}.mp4",
             self.media_dir / "videos" / self.scenes_file.replace('.py', '') / "480p15" / f"{scene_name}.mp4",
             self.media_dir / "videos" / self.scenes_file.replace('.py', '') / "720p30" / f"{scene_name}.mp4",
             self.media_dir / "videos" / self.scenes_file.replace('.py', '') / "1080p60" / f"{scene_name}.mp4",
@@ -430,7 +443,7 @@ class SceneRenderer:
             scene_classes = self.extract_scene_classes()
             
             # Step 2: Render scenes sequentially
-            render_results = self.render_scenes_sequentially(scene_classes)
+            render_results = self.render_scenes_sequentially(scene_classes, self.current_quality)
             
             # Step 3: Check if all scenes rendered successfully
             print(f"\n📹 Checking render results...")
@@ -499,7 +512,14 @@ class SceneRenderer:
             print(f"📹 Final video: {self.output_video}")
             print(f"📊 Total scenes processed: {len(scene_classes)}")
             print(f"📊 Successfully rendered: {len(rendered_videos)}")
-            print(f"🎬 Individual scenes: -ql (480p15)")
+            
+            # Display quality information
+            quality_info = {
+                "ql": "480p15 (Low Quality)",
+                "qm": "720p30 (Medium Quality)", 
+                "qh": "1080p60 (High Quality)"
+            }
+            print(f"🎬 Individual scenes: -q{self.current_quality} ({quality_info.get(self.current_quality, 'Unknown Quality')})")
             if MOVIEPY_AVAILABLE:
                 print(f"🎬 Final video: MoviePy concatenation with synchronized audio")
             else:
@@ -514,7 +534,35 @@ class SceneRenderer:
 
 def main():
     """Main function."""
-    renderer = SceneRenderer()
+    import argparse
+    
+    # Set up command line argument parser
+    parser = argparse.ArgumentParser(
+        description="Render and concatenate Manim scenes with quality options",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Quality Options:
+  ql  - Low quality (480p15) - Fastest rendering
+  qm  - Medium quality (720p30) - Balanced speed/quality  
+  qh  - High quality (1080p60) - Best quality, slower rendering
+
+Examples:
+  python render_and_concatenate_scenes.py
+  python render_and_concatenate_scenes.py --quality qm
+  python render_and_concatenate_scenes.py --quality qh
+        """
+    )
+    
+    parser.add_argument(
+        "--quality",
+        choices=["ql", "qm", "qh"],
+        default="ql",
+        help="Video quality (default: ql)"
+    )
+    
+    args = parser.parse_args()
+    
+    renderer = SceneRenderer(quality=args.quality)
     success = renderer.run()
     
     if success:

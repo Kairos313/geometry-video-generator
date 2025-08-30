@@ -22,8 +22,8 @@ from openai import OpenAI
 import sys
 sys.path.append('/Users/kairos/Desktop/Prompt Generation/Geometry_v2/Geometry Test Questions/Full_Pipeline')
 from pipeline_prompts import ENHANCED_CODE_GENERATION_PROMPT_v4
-# Load environment variables
-load_dotenv('/Users/kairos/Desktop/Prompt Generation/.env')
+# Load environment variables from current directory
+load_dotenv('.env')
 
 # Configure logging
 logging.basicConfig(

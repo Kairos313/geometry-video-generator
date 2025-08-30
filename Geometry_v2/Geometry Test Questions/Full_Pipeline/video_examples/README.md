@@ -983,3 +983,4 @@ python render_and_concatenate_scenes.py
 - The "with pauses" version is optimized for educational viewing
 - All videos include synchronized audio narration and visual animations
 
+

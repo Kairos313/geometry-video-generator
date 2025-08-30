@@ -1,12 +1,22 @@
 {
   "solution_steps": [
     {
-      "step_id": "find_length_QS_using_cosine_rule",
+      "step_id": "part_A_setup",
       "sentences": [
         {
-          "text": "Let's start with part (a). We need to find the length of the diagonal QS. We can focus on the triangle PQS.",
-          "khan_academy_text": "$\\text{In } \\triangle PQS:$",
+          "text": "Let's begin with Part A. We are given a circle with center O, and two tangents, PQ and PR, drawn from an external point P.",
+          "khan_academy_text": "$\\text{Part A: Given a circle with centre O and tangents PQ and PR.}$",
           "geometric_elements": [
+            {
+              "element_type": "circle",
+              "element_id": "circle_main",
+              "animation_type": "draw"
+            },
+            {
+              "element_type": "point",
+              "element_id": "point_O",
+              "animation_type": "draw_and_label"
+            },
             {
               "element_type": "point",
               "element_id": "point_P",
@@ -19,7 +29,7 @@
             },
             {
               "element_type": "point",
-              "element_id": "point_S",
+              "element_id": "point_R",
               "animation_type": "draw_and_label"
             },
             {
@@ -29,55 +39,39 @@
             },
             {
               "element_type": "line",
-              "element_id": "line_PS",
+              "element_id": "line_PR",
               "animation_type": "draw"
             },
             {
               "element_type": "line",
-              "element_id": "line_QS",
+              "element_id": "line_OQ",
               "animation_type": "draw"
             },
             {
-              "element_type": "region",
-              "element_id": "region_triangle_PQS_interior",
-              "animation_type": "highlight"
+              "element_type": "line",
+              "element_id": "line_OR",
+              "animation_type": "draw"
+            },
+            {
+              "element_type": "line",
+              "element_id": "line_OP",
+              "animation_type": "draw"
             }
           ]
         },
         {
-          "text": "We are given two sides, PQ and PS, and the angle between them, angle QPS. This is a perfect setup to use the Cosine Rule.",
-          "khan_academy_text": "$\\text{Given: } PQ = 12 \\text{ cm, } PS = 10 \\text{ cm, } \\angle QPS = 82^\\circ$. $\\text{Use Cosine Rule.}$",
+          "text": "The problem asks for the relationship between angle 'a', which is angle QPR, and angle 'b', which is angle QOR.",
+          "khan_academy_text": "$\\text{Find the relation between } a = \\angle QPR \\text{ and } b = \\angle QOR.$",
           "geometric_elements": [
             {
-              "element_type": "measurement",
-              "element_id": "measurement_PQ",
-              "animation_type": "measurement_label"
+              "element_type": "angle",
+              "element_id": "angle_QPR",
+              "animation_type": "highlight_and_label"
             },
             {
-              "element_type": "measurement",
-              "element_id": "measurement_PS",
-              "animation_type": "measurement_label"
-            },
-            {
-              "element_type": "measurement",
-              "element_id": "measurement_angle_QPS",
-              "animation_type": "measurement_label"
-            }
-          ]
-        },
-        {
-          "text": "The Cosine Rule states that QS squared equals PQ squared plus PS squared minus 2 times PQ times PS times the cosine of angle QPS.",
-          "khan_academy_text": "$QS^2 = PQ^2 + PS^2 - 2(PQ)(PS)\\cos(\\angle QPS)$",
-          "geometric_elements": []
-        },
-        {
-          "text": "Plugging in the values, we get QS squared is approximately 210.6. Taking the square root, we find that QS is about 14.51 centimeters.",
-          "khan_academy_text": "$QS^2 = 12^2 + 10^2 - 2(12)(10)\\cos(82^\\circ) \\approx 210.598 \\implies QS \\approx 14.51 \\text{ cm}$",
-          "geometric_elements": [
-            {
-              "element_type": "measurement",
-              "element_id": "measurement_QS",
-              "animation_type": "measurement_label"
+              "element_type": "angle",
+              "element_id": "angle_QOR",
+              "animation_type": "highlight_and_label"
             }
           ]
         }
@@ -85,282 +79,231 @@
       "starting_diagram": []
     },
     {
-      "step_id": "find_angle_RQS_using_sine_rule",
+      "step_id": "radius_tangent_property",
       "sentences": [
         {
-          "text": "Now for part (a)(ii), finding angle RQS. We'll look at triangle QRS. We know sides QR, QS, and angle QRS.",
-          "khan_academy_text": "$\\text{In } \\triangle QRS: QR = 13 \\text{ cm, } QS \\approx 14.51 \\text{ cm, } \\angle QRS = 65^\\circ$",
+          "text": "A key property of circles is that the radius is always perpendicular to the tangent at the point of contact.",
+          "khan_academy_text": "$\\text{Property: Radius } \\perp \\text{ Tangent}$",
           "geometric_elements": [
             {
-              "element_type": "point",
-              "element_id": "point_R",
-              "animation_type": "draw_and_label"
-            },
-            {
               "element_type": "line",
-              "element_id": "line_QR",
-              "animation_type": "draw"
-            },
-            {
-              "element_type": "line",
-              "element_id": "line_RS",
-              "animation_type": "draw"
-            },
-            {
-              "element_type": "region",
-              "element_id": "region_triangle_QRS_interior",
+              "element_id": "line_OQ",
               "animation_type": "highlight"
             },
             {
-              "element_type": "measurement",
-              "element_id": "measurement_QR",
-              "animation_type": "measurement_label"
-            },
-            {
-              "element_type": "measurement",
-              "element_id": "measurement_angle_QRS",
-              "animation_type": "measurement_label"
+              "element_type": "line",
+              "element_id": "line_PQ",
+              "animation_type": "highlight"
             }
           ]
         },
         {
-          "text": "We can use the Sine Rule. To find angle RQS, it's easiest to first find angle RSQ using the known side-angle pair.",
-          "khan_academy_text": "$\\text{Use Sine Rule: } \\frac{\\sin(\\angle RSQ)}{QR} = \\frac{\\sin(\\angle QRS)}{QS}$",
+          "text": "This means that the angles OQP and ORP are both right angles, measuring 90 degrees.",
+          "khan_academy_text": "$\\angle OQP = 90^{\\circ} \\text{ and } \\angle ORP = 90^{\\circ}$",
           "geometric_elements": [
             {
               "element_type": "angle",
-              "element_id": "angle_RSQ",
-              "animation_type": "highlight"
+              "element_id": "angle_OQP",
+              "animation_type": "highlight_and_label"
             },
             {
-              "element_type": "line",
-              "element_id": "line_QR",
+              "element_type": "angle",
+              "element_id": "angle_ORP",
+              "animation_type": "highlight_and_label"
+            }
+          ]
+        }
+      ],
+      "starting_diagram": [
+        "circle_main",
+        "point_O",
+        "point_O_label",
+        "point_P",
+        "point_P_label",
+        "point_Q",
+        "point_Q_label",
+        "point_R",
+        "point_R_label",
+        "line_PQ",
+        "line_PR",
+        "line_OQ",
+        "line_OR",
+        "line_OP",
+        "angle_QPR_label",
+        "angle_QOR_label"
+      ]
+    },
+    {
+      "step_id": "quadrilateral_angle_sum",
+      "sentences": [
+        {
+          "text": "Now, let's focus on the shape OQPR. It's a quadrilateral, and the sum of the interior angles of any quadrilateral is 360 degrees.",
+          "khan_academy_text": "$\\text{In quadrilateral OQPR, sum of angles} = 360^{\\circ}$",
+          "geometric_elements": [
+            {
+              "element_type": "region",
+              "element_id": "region_quadrilateral_OQPR_interior",
               "animation_type": "highlight"
             }
           ]
         },
         {
-          "text": "Solving for angle RSQ, we find it's the inverse sine of 13 times sine of 65 degrees divided by 14.51, which is about 54.3 degrees.",
-          "khan_academy_text": "$\\sin(\\angle RSQ) = \\frac{13 \\times \\sin(65^\\circ)}{14.51} \\approx 0.8119 \\implies \\angle RSQ \\approx 54.3^\\circ$",
-          "geometric_elements": [
-            {
-              "element_type": "measurement",
-              "element_id": "measurement_angle_RSQ",
-              "animation_type": "measurement_label"
-            }
-          ]
-        },
-        {
-          "text": "Since the angles in a triangle sum to 180 degrees, we can find angle RQS by subtraction. It's approximately 60.7 degrees.",
-          "khan_academy_text": "$\\angle RQS = 180^\\circ - 65^\\circ - 54.3^\\circ \\approx 60.7^\\circ$",
-          "geometric_elements": [
-            {
-              "element_type": "measurement",
-              "element_id": "measurement_angle_RQS",
-              "animation_type": "measurement_label"
-            }
-          ]
-        }
-      ],
-      "starting_diagram": [
-        "point_P",
-        "point_P_label",
-        "point_Q",
-        "point_Q_label",
-        "point_S",
-        "point_S_label",
-        "line_PQ",
-        "line_PS",
-        "line_QS",
-        "measurement_PQ",
-        "measurement_PS",
-        "measurement_angle_QPS",
-        "measurement_QS"
-      ]
-    },
-    {
-      "step_id": "find_shortest_distance_from_R_to_plane_PQS",
-      "sentences": [
-        {
-          "text": "For part (b), the sheet is folded. The shortest distance from point R to the plane PQS is the perpendicular height.",
-          "khan_academy_text": "$\\text{Find shortest distance from R to plane PQS.}$",
-          "geometric_elements": [
-            {
-              "element_type": "construction_line",
-              "element_id": "construction_line_R_to_plane",
-              "animation_type": "draw"
-            }
-          ]
-        },
-        {
-          "text": "We can find this height by considering a right-angled triangle formed by the fold. The angle of the fold is 80 degrees.",
-          "khan_academy_text": "$\\text{Dihedral angle between planes} = 80^\\circ$",
+          "text": "So, we can write the equation: angle QOR plus angle ORP plus angle QPR plus angle OQP equals 360 degrees.",
+          "khan_academy_text": "$\\angle QOR + \\angle ORP + \\angle QPR + \\angle OQP = 360^{\\circ}$",
           "geometric_elements": []
         },
         {
-          "text": "First, we need the altitude from R to the fold line QS in triangle QRS. Using the area formula, this altitude is about 11.4 centimeters.",
-          "khan_academy_text": "$\\text{Altitude } h_{R \\to QS} = \\frac{2 \\times \\text{Area}(\\triangle QRS)}{QS} = \\frac{QR \\times QS \\times \\sin(\\angle RQS)}{QS} = 13 \\sin(60.7^\\circ) \\approx 11.35 \\text{ cm}$",
-          "geometric_elements": [
-            {
-              "element_type": "construction_line",
-              "element_id": "altitude_R_to_QS",
-              "animation_type": "draw"
-            }
-          ]
-        },
-        {
-          "text": "The shortest distance is the side opposite the 80-degree angle in our cross-sectional triangle. It's 11.35 times sine of 80 degrees, which is about 11.2 centimeters.",
-          "khan_academy_text": "$\\text{Distance} = h_{R \\to QS} \\times \\sin(80^\\circ) \\approx 11.35 \\times 0.9848 \\approx 11.2 \\text{ cm}$",
-          "geometric_elements": [
-            {
-              "element_type": "measurement",
-              "element_id": "measurement_shortest_distance_R",
-              "animation_type": "measurement_label"
-            }
-          ]
+          "text": "Substituting 'a' and 'b' and our 90-degree angles, we get: b plus 90 degrees plus a plus 90 degrees equals 360 degrees.",
+          "khan_academy_text": "$b + 90^{\\circ} + a + 90^{\\circ} = 360^{\\circ}$",
+          "geometric_elements": []
         }
       ],
       "starting_diagram": [
+        "circle_main",
+        "point_O",
+        "point_O_label",
         "point_P",
         "point_P_label",
         "point_Q",
         "point_Q_label",
-        "point_S",
-        "point_S_label",
         "point_R",
         "point_R_label",
         "line_PQ",
-        "line_PS",
-        "line_QS",
-        "line_QR",
-        "line_RS",
-        "measurement_QS",
-        "measurement_angle_RQS"
+        "line_PR",
+        "line_OQ",
+        "line_OR",
+        "line_OP",
+        "angle_QPR_label",
+        "angle_QOR_label",
+        "angle_OQP_label",
+        "angle_ORP_label"
       ]
     },
     {
-      "step_id": "evaluate_claim_about_distance_PX",
+      "step_id": "deriving_the_relation",
       "sentences": [
         {
-          "text": "Finally, let's check the claim that the distance from P to any point X on plane QRS is greater than 8 cm. We must find the minimum possible distance.",
-          "khan_academy_text": "$\\text{Is } PX > 8 \\text{ cm for any point X on plane QRS?}$",
+          "text": "Combining the constant terms, the equation simplifies to a plus b plus 180 degrees equals 360 degrees.",
+          "khan_academy_text": "$a + b + 180^{\\circ} = 360^{\\circ}$",
           "geometric_elements": []
         },
         {
-          "text": "This minimum distance is the perpendicular height from P to the plane QRS. The method is the same as the previous step.",
-          "khan_academy_text": "$\\text{Find shortest distance from P to plane QRS.}$",
-          "geometric_elements": [
-            {
-              "element_type": "construction_line",
-              "element_id": "construction_line_P_to_plane",
-              "animation_type": "draw"
-            }
-          ]
-        },
-        {
-          "text": "First, we find the altitude from P to the line QS in triangle PQS. Using the area formula, this altitude is about 8.19 centimeters.",
-          "khan_academy_text": "$\\text{Altitude } h_{P \\to QS} = \\frac{2 \\times \\text{Area}(\\triangle PQS)}{QS} = \\frac{PQ \\times PS \\times \\sin(\\angle QPS)}{QS} = \\frac{12 \\times 10 \\times \\sin(82^\\circ)}{14.51} \\approx 8.19 \\text{ cm}$",
-          "geometric_elements": [
-            {
-              "element_type": "construction_line",
-              "element_id": "altitude_P_to_QS",
-              "animation_type": "draw"
-            }
-          ]
-        },
-        {
-          "text": "The shortest distance from P to the plane is 8.19 times sine of 80 degrees, which is approximately 8.06 centimeters.",
-          "khan_academy_text": "$\\text{Shortest Distance} = h_{P \\to QS} \\times \\sin(80^\\circ) \\approx 8.19 \\times 0.9848 \\approx 8.06 \\text{ cm}$",
-          "geometric_elements": [
-            {
-              "element_type": "measurement",
-              "element_id": "measurement_shortest_distance_P",
-              "animation_type": "measurement_label"
-            }
-          ]
-        },
-        {
-          "text": "Since the minimum distance is 8.06 cm, which is greater than 8 cm, the distance from P to any point X on the plane will always exceed 8 cm. The claim is correct.",
-          "khan_academy_text": "$8.06 \\text{ cm} > 8 \\text{ cm. The claim is correct.}$",
+          "text": "Finally, by subtracting 180 degrees from both sides, we find the relationship: a plus b equals 180 degrees. This means the angles are supplementary.",
+          "khan_academy_text": "$a + b = 180^{\\circ}$",
           "geometric_elements": []
         }
       ],
       "starting_diagram": [
+        "circle_main",
+        "point_O",
+        "point_O_label",
         "point_P",
         "point_P_label",
         "point_Q",
         "point_Q_label",
-        "point_S",
-        "point_S_label",
         "point_R",
         "point_R_label",
         "line_PQ",
-        "line_PS",
-        "line_QS",
-        "line_QR",
-        "line_RS",
-        "measurement_QS",
-        "measurement_angle_QPS"
+        "line_PR",
+        "line_OQ",
+        "line_OR",
+        "line_OP",
+        "angle_QPR_label",
+        "angle_QOR_label",
+        "angle_OQP_label",
+        "angle_ORP_label"
+      ]
+    },
+    {
+      "step_id": "solving_part_B",
+      "sentences": [
+        {
+          "text": "Now for Part B. We can use this exact same relationship. We're told a chord subtends an angle of 60 degrees at the center.",
+          "khan_academy_text": "$\\text{Part B: Central angle } = 60^{\\circ}$",
+          "geometric_elements": []
+        },
+        {
+          "text": "The angle at the center and the angle between the tangents at the ends of the chord are supplementary.",
+          "khan_academy_text": "$\\text{Angle between tangents} + \\text{Central angle} = 180^{\\circ}$",
+          "geometric_elements": []
+        },
+        {
+          "text": "So, the angle between the tangents is 180 degrees minus 60 degrees, which is 120 degrees.",
+          "khan_academy_text": "$\\text{Angle between tangents} = 180^{\\circ} - 60^{\\circ} = 120^{\\circ}$",
+          "geometric_elements": []
+        }
+      ],
+      "starting_diagram": [
+        "circle_main",
+        "point_O",
+        "point_O_label",
+        "point_P",
+        "point_P_label",
+        "point_Q",
+        "point_Q_label",
+        "point_R",
+        "point_R_label",
+        "line_PQ",
+        "line_PR",
+        "line_OQ",
+        "line_OR",
+        "line_OP",
+        "angle_QPR_label",
+        "angle_QOR_label",
+        "angle_OQP_label",
+        "angle_ORP_label"
       ]
     },
     {
       "step_id": "key_takeaways",
       "sentences": [
         {
-          "text": "To recap, we used the Cosine Rule to find a side in a triangle when we knew two sides and the included angle.",
-          "khan_academy_text": "$\\text{Key Method 1: Cosine Rule for Side-Angle-Side (SAS)}$",
+          "text": "The key takeaway from both problems is a fundamental theorem in circle geometry.",
+          "khan_academy_text": "$\\text{Key Theorem}$",
           "geometric_elements": [
             {
               "element_type": "region",
-              "element_id": "region_triangle_PQS_interior",
+              "element_id": "region_quadrilateral_OQPR_interior",
               "animation_type": "highlight"
             }
           ]
         },
         {
-          "text": "We used the Sine Rule to find an unknown angle when we had a known side-angle pair.",
-          "khan_academy_text": "$\\text{Key Method 2: Sine Rule for a known side-angle pair}$",
+          "text": "The angle formed by two tangents from an external point and the angle subtended by the points of contact at the center always add up to 180 degrees.",
+          "khan_academy_text": "$\\text{Angle between tangents} + \\text{Central angle} = 180^{\\circ}$",
           "geometric_elements": [
             {
-              "element_type": "region",
-              "element_id": "region_triangle_QRS_interior",
-              "animation_type": "highlight"
-            }
-          ]
-        },
-        {
-          "text": "And for the 3D part, we found the shortest distance to a plane by creating a 2D right-angled triangle using the altitude to the fold line and the dihedral angle.",
-          "khan_academy_text": "$\\text{Key Method 3: 3D Trigonometry using 2D cross-sections}$",
-          "geometric_elements": [
-            {
-              "element_type": "construction_line",
-              "element_id": "construction_line_R_to_plane",
+              "element_type": "angle",
+              "element_id": "angle_QPR",
               "animation_type": "highlight"
             },
             {
-              "element_type": "construction_line",
-              "element_id": "construction_line_P_to_plane",
+              "element_type": "angle",
+              "element_id": "angle_QOR",
               "animation_type": "highlight"
             }
           ]
         }
       ],
       "starting_diagram": [
+        "circle_main",
+        "point_O",
+        "point_O_label",
         "point_P",
         "point_P_label",
         "point_Q",
         "point_Q_label",
-        "point_S",
-        "point_S_label",
         "point_R",
         "point_R_label",
         "line_PQ",
-        "line_PS",
-        "line_QS",
-        "line_QR",
-        "line_RS",
-        "construction_line_R_to_plane",
-        "construction_line_P_to_plane"
+        "line_PR",
+        "line_OQ",
+        "line_OR",
+        "line_OP",
+        "angle_QPR_label",
+        "angle_QOR_label",
+        "angle_OQP_label",
+        "angle_ORP_label"
       ]
     }
   ]

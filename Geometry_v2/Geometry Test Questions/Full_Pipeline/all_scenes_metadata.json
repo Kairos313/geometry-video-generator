@@ -1,0 +1,11 @@
+{
+  "duration": 78.09722590446472,
+  "prompt_tokens": 25959,
+  "completion_tokens": 7683,
+  "total_tokens": 33642,
+  "response_length": 22234,
+  "speed_chars_per_sec": 284.6964119724118,
+  "model": "anthropic/claude-sonnet-4",
+  "temperature": 0.1,
+  "max_tokens": 20000
+}
